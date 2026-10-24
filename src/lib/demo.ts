@@ -31,3 +31,18 @@ Atenção a ${juntar(odu.queda.alertas.slice(0, 3))}.
 ## Conselho
 ${centro.resumo}`;
 }
+
+/** Entrega o texto em pedaços, como a IA faria. Usado pela rota e pela versão estática. */
+export function textoAosPoucos(texto: string): ReadableStream<Uint8Array> {
+  const encoder = new TextEncoder();
+  const partes = texto.match(/\S+\s*/g) ?? [texto];
+  return new ReadableStream({
+    async start(controller) {
+      for (let i = 0; i < partes.length; i += 3) {
+        controller.enqueue(encoder.encode(partes.slice(i, i + 3).join("")));
+        await new Promise((r) => setTimeout(r, 35));
+      }
+      controller.close();
+    },
+  });
+}

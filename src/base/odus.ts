@@ -4,8 +4,8 @@
 //   Resumo com palavras próprias a partir do material "Cabala dos Odùs".
 // - `queda`: temas do Odù quando ele cai na consulta, organizados nas cinco áreas do jogo.
 //   Resumo com palavras próprias a partir do material "Os 16 Odus Meji Ilustrados".
-// - `autoral`: a interpretação da mãe, com as palavras dela. Por enquanto só Okanran Meji.
 // - `pendencias`: lacunas encontradas no material, para ela completar.
+// A interpretação autoral da mãe fica em `autoral.ts`, que só o servidor usa.
 //
 // Procedimentos de ebó/oferenda ficam de fora desta etapa: o material diz que só devem ser
 // conduzidos por sacerdote, e "faça você mesmo sua oferenda" é um bloco futuro.
@@ -22,7 +22,6 @@ export interface Odu {
   cabala: Record<Posicao, { resumo: string; palavras: string[] }>;
   queda: { geral: string; alertas: string[] } & Record<Area, string[]>;
   observacao?: string;
-  autoral?: { fala: string; elementos: string[] };
   pendencias?: string[];
 }
 
@@ -62,16 +61,6 @@ export const ODUS: Odu[] = [
       trabalho: ["mudanças rápidas de caminho", "não entrar em discussões nem provocações", "impaciência com tarefas e pessoas"],
       saude: ["atenção a acidentes, sustos e sobressaltos", "cuidado com vícios e excessos", "o cansaço espiritual pode virar desânimo"],
       espiritualidade: ["cansaço espiritual", "pode haver necessidade de uma oferenda de proteção, feita por quem tem fundamento", "resistência a ouvir a verdade e os conselhos"],
-    },
-    autoral: {
-      fala: "Então, eu falaria para o meu consulente que esse Odu, Okaran, ele traz acontecimentos rápidos. São mudanças rápidas, eminentes, que vão acontecer. Ele mostra mudanças de caminho muito rápidas. Então, outra coisa também que acontece muito é que traz energias de mudança repentina, superação de crises, vitórias materiais. Também pode trazer alguma necessidade de fazer alguma oferenda espiritual para proteção. Como traz muita impulsividade, teimosia também, falaria para pensar, agir com cautela para não se envolver em conflitos, em acidentes, em brigas.",
-      elementos: [
-        "Movimento: acontecimentos iminentes, mudanças rápidas e mudanças de caminho",
-        "Superação e conquistas: capacidade de superar crises e alcançar vitórias materiais",
-        "Proteção espiritual: pode haver necessidade de uma oferenda espiritual, conforme a leitura",
-        "Cautela: atenção à impulsividade e à teimosia, evitando conflitos, brigas e acidentes",
-        "Não é só um Odù de dificuldade: também mostra oportunidade de mudança, superação e conquista",
-      ],
     },
   },
   {

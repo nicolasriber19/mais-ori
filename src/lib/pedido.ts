@@ -2,6 +2,7 @@
 // já recortados da base para a área consultada.
 
 import { AREAS } from "@/base/areas";
+import { AUTORAL } from "@/base/autoral";
 import { calcularCabala, parseData, POSICOES, SENTIDO_POSICAO, type Cabala } from "@/base/cabala";
 import { getOdu, type Area } from "@/base/odus";
 
@@ -29,8 +30,9 @@ export function montarPedido(nome: string, cabala: Cabala, queda: Queda, ordem: 
     return `- ${s.titulo} (${s.tema}): Odù ${o.numero}, ${o.nome}. ${o.cabala[p].resumo} [${o.cabala[p].palavras.join(", ")}]`;
   }).join("\n");
 
-  const autoral = odu.autoral
-    ? `\nInterpretação autoral dela para ${odu.nome} (prioridade máxima, é assim que ela lê este Odù):\n"${odu.autoral.fala}"\nElementos dessa leitura:\n${odu.autoral.elementos.map((e) => `- ${e}`).join("\n")}\n`
+  const fala = AUTORAL[odu.numero];
+  const autoral = fala
+    ? `\nInterpretação autoral dela para ${odu.nome} (prioridade máxima, é assim que ela lê este Odù):\n"${fala.fala}"\nElementos dessa leitura:\n${fala.elementos.map((e) => `- ${e}`).join("\n")}\n`
     : "";
 
   return `Consulente: ${primeiroNome(nome)}

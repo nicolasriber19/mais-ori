@@ -1,7 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { AREAS } from "@/base/areas";
 import { instrucoesDoSistema } from "@/base/regras";
-import { leituraDemo } from "@/lib/demo";
+import { leituraDemo, textoAosPoucos } from "@/lib/demo";
 import { cabalaDe, montarPedido, type Queda } from "@/lib/pedido";
 
 export const runtime = "nodejs";
@@ -84,20 +84,5 @@ export async function POST(req: Request) {
 
   return new Response(body, {
     headers: { "Content-Type": "text/plain; charset=utf-8", "X-Modo": "ia", "Cache-Control": "no-store" },
-  });
-}
-
-/** Entrega o texto da demonstração em pedaços, como a IA faria. */
-function textoAosPoucos(texto: string): ReadableStream<Uint8Array> {
-  const encoder = new TextEncoder();
-  const partes = texto.match(/\S+\s*/g) ?? [texto];
-  return new ReadableStream({
-    async start(controller) {
-      for (let i = 0; i < partes.length; i += 3) {
-        controller.enqueue(encoder.encode(partes.slice(i, i + 3).join("")));
-        await new Promise((r) => setTimeout(r, 35));
-      }
-      controller.close();
-    },
   });
 }

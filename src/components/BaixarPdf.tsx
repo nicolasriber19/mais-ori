@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Cabala } from "@/base/cabala";
+import { BASE_PATH } from "@/lib/config";
 import type { Sessao } from "@/lib/sessao";
 
 export function BaixarPdf({ sessao, cabala }: { sessao: Sessao; cabala: Cabala }) {
@@ -17,7 +18,7 @@ export function BaixarPdf({ sessao, cabala }: { sessao: Sessao; cabala: Cabala }
         import("@react-pdf/renderer"),
         import("@/lib/ConsultaPdf"),
       ]);
-      registrarFontes(window.location.origin);
+      registrarFontes(window.location.origin + BASE_PATH);
       const blob = await pdf(<ConsultaPdf sessao={sessao} cabala={cabala} />).toBlob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");

@@ -28,7 +28,8 @@ Modelo: `claude-opus-5-5`, com esforço médio e fallback automático do servido
 | O quê | Arquivo |
 |---|---|
 | Cálculo da cabala (regra do PDF) | `src/base/cabala.ts` (testes em `cabala.test.ts`, rode `npm test`) |
-| Os 16 Odùs: textos da cabala, temas de cada queda, interpretação autoral | `src/base/odus.ts` |
+| Os 16 Odùs: textos da cabala e temas de cada queda | `src/base/odus.ts` |
+| Interpretação autoral dela (só o servidor usa) | `src/base/autoral.ts` |
 | Regras de cruzamento, voz dela e formato da resposta | `src/base/regras.ts` |
 | As cinco áreas | `src/base/areas.ts` |
 | Preço | `src/lib/config.ts` |
@@ -39,7 +40,9 @@ Os textos de `odus.ts` foram resumidos com palavras próprias a partir dos PDFs 
 
 ## Publicar
 
-Pensado para a Vercel: importar o projeto, colocar `ANTHROPIC_API_KEY` nas variáveis de ambiente e publicar. Antes de abrir ao público, falta ligar o pagamento de verdade; hoje a rota da IA só tem um limite simples de 40 leituras por hora por IP.
+**Hoje:** GitHub Pages, em https://nicolasriber19.github.io/mais-ori/. A cada envio para a `main`, o workflow `.github/workflows/pages.yml` gera a versão estática (`GITHUB_PAGES=1`) e publica. O Pages não roda servidor, então essa versão fica sempre em modo demonstração: a leitura é montada no navegador e a rota da IA (`src/app/api`) sai do pacote. A interpretação autoral dela e as instruções da IA também ficam fora do site publicado. O código do repositório, porém, é público.
+
+**Para ligar a IA:** é preciso uma hospedagem com servidor (por exemplo, a Vercel), com `ANTHROPIC_API_KEY` nas variáveis de ambiente. Antes de abrir ao público, falta ligar o pagamento de verdade; hoje a rota da IA só tem um limite simples de 40 leituras por hora por IP.
 
 ## Pendências para a mãe
 

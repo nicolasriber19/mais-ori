@@ -8,6 +8,8 @@ import { ConsultaCompleta } from "@/components/ConsultaCompleta";
 import { Carregando, SemDados } from "@/components/Estados";
 import { JogoBuzios } from "@/components/JogoBuzios";
 import { Leitura, problemaDa } from "@/components/Leitura";
+import { ESTATICO } from "@/lib/config";
+import { leituraDemo, textoAosPoucos } from "@/lib/demo";
 import { cabalaDe, primeiroNome } from "@/lib/pedido";
 import { useSessao, type Sessao } from "@/lib/sessao";
 
@@ -73,21 +75,29 @@ export default function Consulta() {
     setEtapa("lendo");
     let acumulado = "";
     try {
-      const resp = await fetch("/api/interpretar", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nome: base.nome,
-          nascimento: base.nascimento,
-          area: area.id,
-          odu: lance.odu,
-          ordem: indiceAtual + 1,
-        }),
-      });
-      if (!resp.ok || !resp.body) throw new Error(String(resp.status));
-      const modoResp = resp.headers.get("X-Modo") === "demo" ? "demo" : "ia";
+      let corpo: ReadableStream<Uint8Array>;
+      let modoResp: "ia" | "demo";
+      if (ESTATICO) {
+        corpo = textoAosPoucos(leituraDemo(cabala!, { area: area.id, odu: lance.odu }));
+        modoResp = "demo";
+      } else {
+        const resp = await fetch("/api/interpretar", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            nome: base.nome,
+            nascimento: base.nascimento,
+            area: area.id,
+            odu: lance.odu,
+            ordem: indiceAtual + 1,
+          }),
+        });
+        if (!resp.ok || !resp.body) throw new Error(String(resp.status));
+        corpo = resp.body;
+        modoResp = resp.headers.get("X-Modo") === "demo" ? "demo" : "ia";
+      }
       setModo(modoResp);
-      const leitor = resp.body.getReader();
+      const leitor = corpo.getReader();
       const decoder = new TextDecoder();
       for (;;) {
         const { done, value } = await leitor.read();
