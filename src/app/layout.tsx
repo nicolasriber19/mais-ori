@@ -1,15 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import { Rodape, Topo } from "@/components/Moldura";
 import "./globals.css";
 
-const display = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
+// Fontes do próprio projeto (as mesmas do PDF): o build não depende do Google Fonts.
+const display = localFont({
+  src: [
+    { path: "../../public/fonts/cormorant-garamond-latin-500-normal.woff", weight: "500", style: "normal" },
+    { path: "../../public/fonts/cormorant-garamond-latin-600-normal.woff", weight: "600", style: "normal" },
+    { path: "../../public/fonts/cormorant-garamond-latin-700-normal.woff", weight: "700", style: "normal" },
+    { path: "../../public/fonts/cormorant-garamond-latin-500-italic.woff", weight: "500", style: "italic" },
+  ],
   variable: "--font-display",
+  display: "swap",
 });
-const texto = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-texto" });
+const texto = localFont({
+  src: [
+    { path: "../../public/fonts/manrope-latin-400-normal.woff", weight: "400", style: "normal" },
+    { path: "../../public/fonts/manrope-latin-600-normal.woff", weight: "600", style: "normal" },
+    { path: "../../public/fonts/manrope-latin-700-normal.woff", weight: "700", style: "normal" },
+  ],
+  variable: "--font-texto",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "+Ori · Consulta de búzios com a sua Cabala dos Odùs",
