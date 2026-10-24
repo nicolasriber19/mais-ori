@@ -33,10 +33,19 @@ Modelo: `claude-opus-5-5`, com esforço médio e fallback automático do servido
 | Regras de cruzamento, voz dela e formato da resposta | `src/base/regras.ts` |
 | As cinco áreas | `src/base/areas.ts` |
 | Preço | `src/lib/config.ts` |
+| Falas da guia virtual (e o nome do áudio de cada uma) | `src/lib/guia.ts` |
+| Guia virtual: avatar, balão e voz | `src/components/GuiaCabala.tsx` |
+| Imagem, vídeo e voz da guia | `public/guia/` (`voz/` tem um MP3 por fala) |
 | Chamada da IA | `src/app/api/interpretar/route.ts` |
 | PDF | `src/lib/ConsultaPdf.tsx` |
 
 Os textos de `odus.ts` foram resumidos com palavras próprias a partir dos PDFs que ela mandou (que trazem a marca @biblioteca dos guardiões). A camada autoral, que é o diferencial, ainda só existe para Okanran Meji.
+
+## Guia virtual
+
+A guia que explica a cabala usa um retrato e um vídeo da mãe gerados no Higgsfield a partir de uma foto dela, e a voz dela clonada no Higgsfield Audio (modelo Seed Audio 1.0) a partir de 30 segundos dos áudios do WhatsApp. São 75 áudios, um para cada fala possível: as 71 combinações de ponto e Odù que acontecem em datas reais e 4 falas fixas. Os áudios não dizem o nome da pessoa (só "Oi!"); o texto na tela diz.
+
+Se mudar o texto de uma fala em `src/lib/guia.ts`, o áudio correspondente precisa ser gerado de novo (o texto lido é o mesmo, trocando "Odù" por "Odu").
 
 ## Publicar
 

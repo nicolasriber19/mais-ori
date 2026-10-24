@@ -3,28 +3,33 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { Posicao } from "@/base/cabala";
-import { GUIA_MIDIA } from "@/lib/config";
+import { BASE_PATH, GUIA_MIDIA } from "@/lib/config";
 import type { Fala } from "@/lib/guia";
 
 const CHAVE_MINIMIZADA = "maisori:guia-minimizada";
+const CHAVE_VOZ = "maisori:guia-voz";
 
-function lerMinimizada(): boolean {
+function lerPreferencia(chave: string): boolean | null {
   try {
-    const v = localStorage.getItem(CHAVE_MINIMIZADA);
+    const v = localStorage.getItem(chave);
     if (v !== null) return v === "1";
   } catch {
-    // sem armazenamento: decide pelo tamanho da tela
+    // sem armazenamento: fica o padrão
   }
-  return window.innerWidth < 720;
+  return null;
 }
 
-function gravarMinimizada(v: boolean) {
+function gravarPreferencia(chave: string, v: boolean) {
   try {
-    localStorage.setItem(CHAVE_MINIMIZADA, v ? "1" : "0");
+    localStorage.setItem(chave, v ? "1" : "0");
   } catch {
     // tudo bem: só não lembra na próxima visita
   }
 }
+
+/** Sem preferência gravada, começa minimizada no celular. */
+const lerMinimizada = () => lerPreferencia(CHAVE_MINIMIZADA) ?? window.innerWidth < 720;
+const gravarMinimizada = (v: boolean) => gravarPreferencia(CHAVE_MINIMIZADA, v);
 
 function Avatar({ falando, tamanho }: { falando: boolean; tamanho: "grande" | "bolha" }) {
   const [semVideo, setSemVideo] = useState(false);
@@ -45,7 +50,7 @@ function Avatar({ falando, tamanho }: { falando: boolean; tamanho: "grande" | "b
 
   const usarVideo = !semVideo && !movimentoReduzido;
   return (
-    <span className={`guia__avatar guia__avatar--${tamanho}`} aria-hidden="true">
+    <span className={`guia__avatar guia__avatar--${tamanho}${falando ? " guia__avatar--falando" : ""}`} aria-hidden="true">
       {semImagem && semVideo ? (
         <span className="guia__avatar-reserva">+</span>
       ) : usarVideo ? (
@@ -72,26 +77,65 @@ function Avatar({ falando, tamanho }: { falando: boolean; tamanho: "grande" | "b
 export function GuiaCabala({ falas, onDestaque }: { falas: Fala[]; onDestaque: (d: Posicao | "todos" | null) => void }) {
   const [pronta, setPronta] = useState(false);
   const [minimizada, setMinimizada] = useState(true);
+  const [comVoz, setComVoz] = useState(false);
+  const [tocando, setTocando] = useState(false);
   const [i, setI] = useState(0);
   const [letras, setLetras] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     setMinimizada(lerMinimizada());
+    setComVoz(lerPreferencia(CHAVE_VOZ) ?? false);
     setPronta(true);
+    return () => audioRef.current?.pause();
   }, []);
 
   const fala = falas[Math.min(i, falas.length - 1)];
-  const { texto, destaque } = fala;
+  const { texto, destaque, voz } = fala;
   const digitando = letras < texto.length;
 
   useEffect(() => {
     onDestaque(minimizada ? null : destaque);
   }, [destaque, minimizada, onDestaque]);
 
-  // Depende só do texto: a página pode recriar a lista de falas sem reiniciar a digitação.
+  // Depende só do texto e do áudio: a página pode recriar a lista de falas sem reiniciar a fala.
   useEffect(() => {
     if (minimizada) return;
     setLetras(0);
+
+    if (comVoz) {
+      // Com a voz dela, o texto aparece no ritmo do áudio.
+      const a = audioRef.current ?? (audioRef.current = new Audio());
+      a.src = `${BASE_PATH}/guia/voz/${voz}`;
+      let quadro = 0;
+      const acompanhar = () => {
+        if (a.duration) setLetras(Math.min(texto.length, Math.ceil((texto.length * a.currentTime) / a.duration)));
+        quadro = requestAnimationFrame(acompanhar);
+      };
+      const terminar = () => {
+        cancelAnimationFrame(quadro);
+        setLetras(texto.length);
+        setTocando(false);
+      };
+      a.addEventListener("ended", terminar);
+      a.addEventListener("error", terminar);
+      setTocando(true);
+      a.play()
+        .then(() => (quadro = requestAnimationFrame(acompanhar)))
+        .catch(() => {
+          // o navegador só deixa tocar som depois de um clique: volta para o texto
+          terminar();
+          setComVoz(false);
+        });
+      return () => {
+        cancelAnimationFrame(quadro);
+        a.removeEventListener("ended", terminar);
+        a.removeEventListener("error", terminar);
+        a.pause();
+        setTocando(false);
+      };
+    }
+
     const id = setInterval(() => {
       setLetras((n) => {
         if (n >= texto.length) {
@@ -102,7 +146,7 @@ export function GuiaCabala({ falas, onDestaque }: { falas: Fala[]; onDestaque: (
       });
     }, 22);
     return () => clearInterval(id);
-  }, [texto, minimizada]);
+  }, [texto, voz, minimizada, comVoz]);
 
   function minimizar(v: boolean) {
     if (!v && i === falas.length - 1) setI(0);
@@ -110,12 +154,31 @@ export function GuiaCabala({ falas, onDestaque }: { falas: Fala[]; onDestaque: (
     gravarMinimizada(v);
   }
 
+  function alternarVoz() {
+    const v = !comVoz;
+    setComVoz(v);
+    gravarPreferencia(CHAVE_VOZ, v);
+  }
+
+  function pular() {
+    audioRef.current?.pause();
+    setTocando(false);
+    setLetras(texto.length);
+  }
+
   if (!pronta) return null;
 
   if (minimizada) {
     return (
       <div className="guia guia--minimizada">
-        <button className="guia__bolha" onClick={() => minimizar(false)} aria-label="Abrir a guia que explica a sua cabala">
+        <button
+          className="guia__bolha"
+          onClick={() => {
+            minimizar(false);
+            if (!comVoz) alternarVoz();
+          }}
+          aria-label="Abrir a guia que explica a sua cabala"
+        >
           <Avatar falando={false} tamanho="bolha" />
           <span className="guia__bolha-dica">Quer que eu explique o seu mapa?</span>
         </button>
@@ -127,15 +190,26 @@ export function GuiaCabala({ falas, onDestaque }: { falas: Fala[]; onDestaque: (
   return (
     <aside className="guia" aria-label="Guia da sua cabala">
       <div className="guia__cartao">
-        <Avatar falando={digitando} tamanho="grande" />
+        <Avatar falando={comVoz ? tocando : digitando} tamanho="grande" />
         <div className="guia__conteudo">
           <div className="guia__topo">
             <span className="guia__nome">Sua guia no +Ori</span>
-            <button className="guia__fechar" onClick={() => minimizar(true)} aria-label="Minimizar a guia">
-              ×
-            </button>
+            <div style={{ display: "flex", gap: 6 }}>
+              <button
+                className={`guia__som${comVoz ? " guia__som--ligado" : ""}`}
+                onClick={alternarVoz}
+                aria-pressed={comVoz}
+                aria-label={comVoz ? "Desligar a voz" : "Ouvir com a voz dela"}
+                title={comVoz ? "Desligar a voz" : "Ouvir com a voz dela"}
+              >
+                {comVoz ? "" : "Ouvir"}
+              </button>
+              <button className="guia__fechar" onClick={() => minimizar(true)} aria-label="Minimizar a guia">
+                ×
+              </button>
+            </div>
           </div>
-          <p className="guia__texto" aria-live="polite" onClick={() => setLetras(texto.length)}>
+          <p className="guia__texto" aria-live="polite" onClick={pular}>
             {texto.slice(0, letras)}
             {digitando && <span className="guia__cursor" aria-hidden="true" />}
           </p>
@@ -156,7 +230,7 @@ export function GuiaCabala({ falas, onDestaque }: { falas: Fala[]; onDestaque: (
               )}
               <button
                 className="botao botao--contorno botao--pequeno"
-                onClick={() => (digitando ? setLetras(texto.length) : ultima ? minimizar(true) : setI(i + 1))}
+                onClick={() => (digitando ? pular() : ultima ? minimizar(true) : setI(i + 1))}
               >
                 {digitando ? "Pular" : ultima ? "Fechar" : "Próximo"}
               </button>

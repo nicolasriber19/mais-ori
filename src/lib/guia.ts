@@ -8,7 +8,14 @@ import { primeiroNome } from "./pedido";
 export interface Fala {
   destaque: Posicao | "todos" | null;
   texto: string;
+  /** Áudio na voz dela, em public/guia/voz (gerado sem o nome da pessoa). */
+  voz: string;
   acao?: "checkout";
+}
+
+/** Texto como deve ser lido pela voz: sem o acento de Odù, que a voz pronuncia errado. */
+export function textoFalado(texto: string): string {
+  return texto.replace(/Odù/g, "Odu");
 }
 
 const ABERTURA_POSICAO: Record<Posicao, (odu: string, n: number) => string> = {
@@ -26,23 +33,30 @@ function resumoCurto(texto: string): string {
 
 function falaDoPonto(cabala: Cabala, p: Posicao): Fala {
   const odu = getOdu(cabala[p]);
-  return { destaque: p, texto: `${ABERTURA_POSICAO[p](odu.nome, odu.numero)} ${resumoCurto(odu.cabala[p].resumo)}` };
+  return {
+    destaque: p,
+    texto: `${ABERTURA_POSICAO[p](odu.nome, odu.numero)} ${resumoCurto(odu.cabala[p].resumo)}`,
+    voz: `${p}-${odu.numero}.mp3`,
+  };
 }
 
+/** Com nome vazio, sai a versão usada para gravar o áudio ("Oi!"). */
 export function falasDoGuia(nome: string, cabala: Cabala, modo: "amostra" | "completo"): Fala[] {
   const quem = primeiroNome(nome);
-  const nomeDe = (p: Posicao) => getOdu(cabala[p]).nome;
+  const oi = quem ? `Oi, ${quem}!` : "Oi!";
 
   if (modo === "amostra") {
     return [
       {
         destaque: "todos",
-        texto: `Oi, ${quem}! Que bom te ver aqui. Montei o seu mapa com a sua data de nascimento: são cinco pontos, e cada um recebeu um dos 16 Odùs. Vem comigo que eu te conto o seu Norte.`,
+        texto: `${oi} Que bom te ver aqui. Montei o seu mapa com a sua data de nascimento: são cinco pontos, e cada um recebeu um dos 16 Odùs. Vem comigo que eu te conto o seu Norte.`,
+        voz: "amostra-abertura.mp3",
       },
       falaDoPonto(cabala, "norte"),
       {
         destaque: "todos",
-        texto: `Os outros pontos já estão no seu mapa: ${nomeDe("leste")} no Leste, ${nomeDe("oeste")} no Oeste, ${nomeDe("sul")} no Sul e ${nomeDe("centro")} no Centro. Na consulta completa eu te explico cada um e jogo os búzios para o amor, o dinheiro, o trabalho, a saúde e a espiritualidade.`,
+        texto: "Os outros quatro pontos do seu mapa estão esperando por você na consulta completa. Lá eu te explico cada um e jogo os búzios para o amor, o dinheiro, o trabalho, a saúde e a espiritualidade.",
+        voz: "amostra-convite.mp3",
         acao: "checkout",
       },
     ];
@@ -51,7 +65,8 @@ export function falasDoGuia(nome: string, cabala: Cabala, modo: "amostra" | "com
   return [
     {
       destaque: "todos",
-      texto: `Oi, ${quem}! Aqui está o seu mapa completo. São cinco pontos, cada um com um Odù, e eu vou te mostrar um por um.`,
+      texto: `${oi} Aqui está o seu mapa completo. São cinco pontos, cada um com um Odù, e eu vou te mostrar um por um.`,
+      voz: "completo-abertura.mp3",
     },
     falaDoPonto(cabala, "norte"),
     falaDoPonto(cabala, "leste"),
@@ -61,6 +76,7 @@ export function falasDoGuia(nome: string, cabala: Cabala, modo: "amostra" | "com
     {
       destaque: "todos",
       texto: "Esse é o seu mapa. Logo abaixo estão as cinco quedas dos búzios, cada uma lida para você. Se quiser, salve tudo em PDF para reler quando precisar.",
+      voz: "completo-fim.mp3",
     },
   ];
 }
