@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+.env
+.vercel
+
+# material recebido da mãe (PDFs de terceiros e áudios pessoais): fica só no computador
+material/
