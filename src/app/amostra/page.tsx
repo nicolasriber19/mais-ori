@@ -1,15 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import type { Posicao } from "@/base/cabala";
 import { CabalaCruz } from "@/components/CabalaCruz";
 import { Carregando, SemDados } from "@/components/Estados";
+import { GuiaCabala } from "@/components/GuiaCabala";
 import { TextoPonto } from "@/components/TextoPonto";
 import { PRECO } from "@/lib/config";
+import { falasDoGuia } from "@/lib/guia";
 import { cabalaDe, primeiroNome } from "@/lib/pedido";
 import { useSessao } from "@/lib/sessao";
 
 export default function Amostra() {
   const { sessao, pronto } = useSessao();
+  const [destaque, setDestaque] = useState<Posicao | "todos" | null>(null);
   if (!pronto) return <Carregando />;
   const cabala = sessao ? cabalaDe(sessao.nascimento) : null;
   if (!sessao || !cabala) return <SemDados />;
@@ -29,7 +34,7 @@ export default function Amostra() {
         <div className="amostra">
           <div style={{ display: "grid", gap: 20 }}>
             <div className="cartao" style={{ padding: "30px 16px" }}>
-              <CabalaCruz cabala={cabala} />
+              <CabalaCruz cabala={cabala} destaque={destaque} />
             </div>
             <div className="cartao cartao--ouro resumo-compra">
               <span className="eyebrow">Consulta completa</span>
@@ -57,6 +62,7 @@ export default function Amostra() {
           </div>
         </div>
       </div>
+      <GuiaCabala falas={falasDoGuia(sessao.nome, cabala, "amostra")} onDestaque={setDestaque} />
     </section>
   );
 }

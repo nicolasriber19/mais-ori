@@ -1,16 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { AREAS } from "@/base/areas";
-import { POSICOES, type Cabala } from "@/base/cabala";
+import { POSICOES, type Cabala, type Posicao } from "@/base/cabala";
 import { getOdu } from "@/base/odus";
+import { falasDoGuia } from "@/lib/guia";
 import { primeiroNome } from "@/lib/pedido";
 import type { Sessao } from "@/lib/sessao";
 import { BaixarPdf } from "./BaixarPdf";
 import { CabalaCruz } from "./CabalaCruz";
+import { GuiaCabala } from "./GuiaCabala";
 import { Leitura } from "./Leitura";
 import { TextoPonto } from "./TextoPonto";
 
 export function ConsultaCompleta({ sessao, cabala, novaConsulta }: { sessao: Sessao; cabala: Cabala; novaConsulta: () => void }) {
+  const [destaque, setDestaque] = useState<Posicao | "todos" | null>(null);
   const quedas = sessao.quedas ?? [];
   const algumaDemo = quedas.some((q) => q.modo === "demo");
 
@@ -43,8 +47,8 @@ export function ConsultaCompleta({ sessao, cabala, novaConsulta }: { sessao: Ses
           <h2>A sua Cabala dos Odùs</h2>
         </div>
         <div className="amostra">
-          <div className="cartao" style={{ padding: "30px 16px", alignSelf: "start" }}>
-            <CabalaCruz cabala={cabala} />
+          <div className="cartao cruz-fixa" style={{ padding: "30px 16px", alignSelf: "start" }}>
+            <CabalaCruz cabala={cabala} destaque={destaque} />
           </div>
           <div style={{ display: "grid", gap: 14 }}>
             {POSICOES.map((p) => (
@@ -77,6 +81,7 @@ export function ConsultaCompleta({ sessao, cabala, novaConsulta }: { sessao: Ses
           );
         })}
       </div>
+      <GuiaCabala falas={falasDoGuia(sessao.nome, cabala, "completo")} onDestaque={setDestaque} />
     </section>
   );
 }

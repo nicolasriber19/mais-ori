@@ -10,11 +10,15 @@ const CURTO: Record<Posicao, string> = {
   centro: "Essência",
 };
 
-export function CabalaCruz({ cabala }: { cabala?: Cabala }) {
+export function CabalaCruz({ cabala, destaque }: { cabala?: Cabala; destaque?: Posicao | "todos" | null }) {
+  const destacando = destaque && destaque !== "todos";
   return (
-    <ul className="cruz limpa" aria-label={cabala ? "Sua Cabala dos Odùs" : "As cinco posições da cabala"}>
+    <ul
+      className={`cruz limpa${destacando ? " cruz--destacando" : ""}`}
+      aria-label={cabala ? "Sua Cabala dos Odùs" : "As cinco posições da cabala"}
+    >
       {POSICOES.map((p) => (
-        <li key={p} className={`cruz__pos cruz__pos--${p}`}>
+        <li key={p} className={`cruz__pos cruz__pos--${p}${destaque === p ? " cruz__pos--ativo" : ""}`}>
           <span className={`bolinha cor-${p}`}>{cabala ? cabala[p] : LETRA[p]}</span>
           <span className="cruz__titulo">{SENTIDO_POSICAO[p].titulo}</span>
           {cabala ? (

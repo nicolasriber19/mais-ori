@@ -204,6 +204,50 @@ p { margin: 0; }
 .cruz__nome { font-family: var(--font-display), serif; font-size: 1.05rem; color: var(--creme); line-height: 1.15; }
 .cruz__tema { font-size: 0.72rem; color: var(--texto-fraco); line-height: 1.3; }
 @media (min-width: 560px) { .cruz { gap: 14px; } .cruz__nome { font-size: 1.2rem; } }
+.cruz__pos { transition: transform 0.35s ease, opacity 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease; }
+.cruz--destacando .cruz__pos { opacity: 0.38; }
+.cruz--destacando .cruz__pos--ativo { opacity: 1; transform: scale(1.08); border-color: var(--ouro); box-shadow: 0 0 0 3px rgba(212, 175, 110, 0.18); }
+@media (min-width: 960px) { .cruz-fixa { position: sticky; top: 92px; } }
+
+/* guia virtual */
+.guia { position: fixed; right: 20px; bottom: 20px; z-index: 40; width: min(380px, calc(100vw - 32px)); }
+.guia__cartao {
+  display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 14px; padding: 16px;
+  background: var(--superficie-2); border: 1px solid var(--borda-forte); border-radius: var(--raio); box-shadow: var(--sombra);
+}
+.guia__avatar { position: relative; display: block; border-radius: 50%; overflow: hidden; background: var(--superficie); border: 2px solid var(--ouro); }
+.guia__avatar--grande { width: 84px; height: 84px; }
+.guia__avatar--bolha { width: 64px; height: 64px; flex: none; }
+.guia__avatar video, .guia__avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.guia__video-falando { opacity: 0; transition: opacity 0.2s ease; }
+.guia__video-falando--ativo { opacity: 1; }
+.guia__avatar-reserva { display: grid; place-items: center; width: 100%; height: 100%; font-family: var(--font-display), serif; font-size: 2rem; color: var(--ouro); }
+.guia__conteudo { display: grid; gap: 10px; align-content: start; }
+.guia__topo { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.guia__nome { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ouro); }
+.guia__fechar { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--borda); background: transparent; color: var(--texto-suave); cursor: pointer; font-size: 1.1rem; line-height: 1; }
+.guia__fechar:hover { color: var(--creme); border-color: var(--borda-forte); }
+.guia__texto { font-size: 0.95rem; line-height: 1.6; color: var(--texto); min-height: 7.2em; cursor: default; }
+.guia__cursor { display: inline-block; width: 2px; height: 1em; margin-left: 2px; vertical-align: -2px; background: var(--ouro); animation: piscar 1s steps(1) infinite; }
+.guia__controles { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.guia__contador { font-size: 0.78rem; color: var(--texto-fraco); }
+.guia--minimizada { width: auto; }
+.guia__bolha {
+  display: flex; align-items: center; gap: 12px; padding: 6px 18px 6px 6px; border-radius: 999px; cursor: pointer;
+  background: var(--superficie-2); border: 1px solid var(--borda-forte); box-shadow: var(--sombra); color: var(--creme); font: inherit;
+  animation: flutuar 3.4s ease-in-out infinite;
+}
+.guia__bolha:hover { border-color: var(--ouro); }
+.guia__bolha-dica { font-size: 0.88rem; font-weight: 600; }
+@keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@media (max-width: 719px) {
+  .guia { left: 16px; right: 16px; bottom: 16px; width: auto; }
+  .guia--minimizada { left: auto; }
+  .guia__cartao { grid-template-columns: 60px minmax(0, 1fr); padding: 14px; }
+  .guia__avatar--grande { width: 60px; height: 60px; }
+  .guia__bolha-dica { display: none; }
+  .guia__bolha { padding: 6px; }
+}
 
 /* áreas */
 .areas { display: grid; gap: 14px; }
@@ -329,6 +373,7 @@ p { margin: 0; }
 @keyframes pulso { 0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .peneira--agitando, .cursor::after, .carregando i { animation: none; }
+  .peneira--agitando, .cursor::after, .carregando i, .guia__bolha, .guia__cursor { animation: none; }
+  .cruz__pos { transition: none; }
   .buzio { transition: none; }
 }
