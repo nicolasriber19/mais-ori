@@ -75,7 +75,7 @@ export function falasDoGuia(nome: string, cabala: Cabala, modo: "amostra" | "com
     falaDoPonto(cabala, "centro"),
     {
       destaque: "todos",
-      texto: "Esse é o seu mapa. Logo abaixo estão as cinco quedas dos búzios, cada uma lida para você. Se quiser, salve tudo em PDF para reler quando precisar.",
+      texto: "Esse é o seu mapa. Logo abaixo estão as cinco jogadas de búzios, cada uma lida para você. Se quiser, salve tudo em PDF para reler quando precisar.",
       voz: "completo-fim.mp3",
     },
   ];

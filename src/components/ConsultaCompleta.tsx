@@ -25,7 +25,7 @@ export function ConsultaCompleta({ sessao, cabala, novaConsulta }: { sessao: Ses
           <span className="eyebrow">Consulta completa</span>
           <h1>{primeiroNome(sessao.nome)}, aqui está a sua consulta</h1>
           <p className="texto-suave">
-            O seu mapa da Cabala dos Odùs e as cinco quedas dos búzios, cada uma lida para você. Salve em PDF para reler
+            O seu mapa da Cabala dos Odùs e as cinco jogadas de búzios, cada uma lida para você. Salve em PDF para reler
             quando quiser.
           </p>
           <div className="acoes">
@@ -58,7 +58,7 @@ export function ConsultaCompleta({ sessao, cabala, novaConsulta }: { sessao: Ses
         </div>
 
         <div className="secao__cabeca" style={{ marginBottom: 0, marginTop: 40 }}>
-          <span className="eyebrow">As cinco quedas</span>
+          <span className="eyebrow">As cinco jogadas</span>
           <h2>O que os búzios disseram</h2>
         </div>
         {quedas.map((q, i) => {
@@ -68,7 +68,7 @@ export function ConsultaCompleta({ sessao, cabala, novaConsulta }: { sessao: Ses
             <article key={q.area} className="cartao leitura">
               <div className="leitura__area">
                 <span className="eyebrow">
-                  {i + 1}ª queda · {area.titulo}
+                  {i + 1}ª jogada · {area.titulo}
                 </span>
               </div>
               <div className="resultado-queda" style={{ justifyItems: "start" }}>

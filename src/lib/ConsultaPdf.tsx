@@ -106,7 +106,7 @@ export function ConsultaPdf({ sessao, cabala }: { sessao: Sessao; cabala: Cabala
       </Page>
 
       <Page size="A4" style={s.pagina}>
-        <Text style={s.h2}>As cinco quedas</Text>
+        <Text style={s.h2}>As cinco jogadas</Text>
         {quedas.map((q, i) => {
           const o = getOdu(q.odu);
           const area = AREAS.find((a) => a.id === q.area)!;
@@ -114,7 +114,7 @@ export function ConsultaPdf({ sessao, cabala }: { sessao: Sessao; cabala: Cabala
             <View key={q.area} style={s.queda}>
               <View wrap={false}>
                 <Text style={s.quedaArea}>
-                  {i + 1}ª queda · {area.titulo}
+                  {i + 1}ª jogada · {area.titulo}
                 </Text>
                 <Text style={s.quedaOdu}>
                   Odù <Text style={{ fontFamily: "Manrope", fontWeight: 600, fontSize: 17 }}>{o.numero}</Text> · {o.nome}

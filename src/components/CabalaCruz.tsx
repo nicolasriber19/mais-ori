@@ -3,11 +3,11 @@ import { getOdu } from "@/base/odus";
 
 const LETRA: Record<Posicao, string> = { norte: "N", sul: "S", leste: "L", oeste: "O", centro: "C" };
 const CURTO: Record<Posicao, string> = {
-  norte: "Destino e Ori",
-  sul: "Caminhos e passos",
-  leste: "O que te favorece",
-  oeste: "O que pede atenção",
-  centro: "Essência",
+  norte: "Ori e destino",
+  sul: "Sua história",
+  leste: "Forças e oportunidades",
+  oeste: "Atenção e cuidado",
+  centro: "Ponto de equilíbrio",
 };
 
 export function CabalaCruz({ cabala, destaque }: { cabala?: Cabala; destaque?: Posicao | "todos" | null }) {

@@ -1,4 +1,4 @@
-// Monta o pedido de uma queda: os dados do consulente, a cabala dele e o Odù que caiu,
+// Monta o pedido de uma jogada: os dados do consulente, a cabala dele e o Odù que caiu,
 // já recortados da base para a área consultada.
 
 import { AREAS } from "@/base/areas";
@@ -36,7 +36,7 @@ export function montarPedido(nome: string, cabala: Cabala, queda: Queda, ordem: 
     : "";
 
   return `Consulente: ${primeiroNome(nome)}
-Queda ${ordem} de 5: ${area.titulo} (${area.foco}).
+Jogada ${ordem} de 5: ${area.titulo} (${area.foco}).
 
 ODÙ QUE CAIU: ${odu.numero}, ${odu.nome}
 Sentença: ${odu.sentencas.map((s) => `"${s}"`).join(" / ")}
@@ -49,5 +49,5 @@ ${autoral}
 CABALA DO CONSULENTE (lente individualizadora):
 ${linhasCabala}
 
-Escreva a interpretação desta queda para ${primeiroNome(nome)}.`;
+Escreva a interpretação desta jogada para ${primeiroNome(nome)}.`;
 }

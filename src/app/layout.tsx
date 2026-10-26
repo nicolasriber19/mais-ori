@@ -27,7 +27,7 @@ const texto = localFont({
 export const metadata: Metadata = {
   title: "+Ori · Consulta de búzios com a sua Cabala dos Odùs",
   description:
-    "Acolhimento, clareza e direcionamento espiritual: a queda dos búzios cruzada com a sua Cabala dos Odùs, em cinco áreas da vida.",
+    "Acolhimento, clareza e direcionamento espiritual: cinco jogadas de búzios cruzadas com a sua Cabala dos Odùs, uma para cada área da vida.",
 };
 
 export const viewport: Viewport = { themeColor: "#0e0a07" };

@@ -143,7 +143,7 @@ export default function Consulta() {
           <h1>{area.titulo}</h1>
         </div>
 
-        <ol className="limpa progresso" aria-label="Quedas da consulta">
+        <ol className="limpa progresso" aria-label="Jogadas da consulta">
           {AREAS.map((a, i) => {
             const estado = i < feitas.length && !(etapa === "lida" && i === indiceAtual) ? "feito" : i === indiceAtual ? "atual" : "";
             return (
@@ -182,14 +182,14 @@ export default function Consulta() {
           <div className="cartao leitura" aria-live="polite" aria-busy={etapa === "lendo"}>
             <div className="leitura__area">
               <span className="eyebrow">
-                {indiceAtual + 1}ª queda · {area.curto}
+                {indiceAtual + 1}ª jogada · {area.curto}
               </span>
               {modo === "demo" && jogou && <span className="texto-suave" style={{ fontSize: "0.8rem" }}>modo demonstração</span>}
             </div>
 
             {!jogou && (
               <p className="texto-suave">
-                A interpretação aparece aqui logo depois da queda: o que o Odù traz sobre {area.titulo.toLowerCase()},
+                A interpretação aparece aqui logo depois da jogada: o que o Odù traz sobre {area.titulo.toLowerCase()},
                 como isso se mostra na sua cabala, os cuidados e o conselho para você.
               </p>
             )}
@@ -232,7 +232,7 @@ export default function Consulta() {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                 >
-                  {ultima ? "Ver minha consulta completa" : `Próxima queda: ${AREAS[indiceAtual + 1].curto}`}
+                  {ultima ? "Ver minha consulta completa" : `Próxima jogada: ${AREAS[indiceAtual + 1].curto}`}
                 </button>
               </div>
             )}

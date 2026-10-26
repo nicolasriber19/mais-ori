@@ -38,10 +38,10 @@ export function FormAmostra() {
       noValidate
     >
       <div style={{ display: "grid", gap: 6 }}>
-        <span className="eyebrow">Amostra grátis</span>
-        <h2>Descubra a sua cabala</h2>
+        <span className="eyebrow">Sua primeira etapa</span>
+        <h2>Vamos começar pelo seu Ori?</h2>
         <p className="texto-suave" style={{ fontSize: "0.95rem" }}>
-          Com seu nome e sua data de nascimento, o +Ori monta o seu mapa dos Odùs.
+          Conheça seu mapa individual de Odùs e dê o primeiro passo para sua consulta.
         </p>
       </div>
       <div className="campo">
@@ -54,11 +54,11 @@ export function FormAmostra() {
             setNome(e.target.value);
             setErro(null);
           }}
-          placeholder="Como você se chama"
+          placeholder="Digite seu nome completo"
         />
       </div>
       <div className="campo">
-        <label htmlFor="nascimento">Data de nascimento</label>
+        <label htmlFor="nascimento">Sua data de nascimento</label>
         <input
           id="nascimento"
           inputMode="numeric"
@@ -77,7 +77,7 @@ export function FormAmostra() {
         </p>
       )}
       <button type="submit" className="botao botao--ouro botao--largo">
-        Ver minha cabala
+        Conhecer meu mapa
       </button>
       <div className="amostra-form__ou">ou</div>
       <button type="button" className="botao botao--contorno botao--largo" onClick={() => seguir("/checkout")}>

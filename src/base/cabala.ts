@@ -17,28 +17,32 @@ export const POSICOES: Posicao[] = ["norte", "sul", "leste", "oeste", "centro"];
 export const SENTIDO_POSICAO: Record<Posicao, { titulo: string; tema: string; descricao: string }> = {
   norte: {
     titulo: "Norte",
-    tema: "Destino, Ori e personalidade",
-    descricao: "A direção maior da vida, o jeito de ser e o que está ligado ao propósito individual.",
+    tema: "Seu Ori, seu destino e sua essência",
+    descricao: "O que revela sua maneira de ser, suas características e a direção que se conecta ao seu propósito de vida.",
   },
   sul: {
     titulo: "Sul",
-    tema: "Os pés, os passos e o caminho",
-    descricao: "O caminho já percorrido e a estrutura que precisa ser organizada, construída ou fortalecida.",
+    tema: "Sua história e os caminhos que construiu",
+    descricao:
+      "Os passos que você já deu, as experiências que carrega e aquilo que pode precisar de fortalecimento para seguir adiante.",
   },
   leste: {
     titulo: "Leste",
-    tema: "Lado direito: o que te favorece",
-    descricao: "A força a favor: o que protege, impulsiona e abre caminhos.",
+    tema: "Suas forças e oportunidades",
+    descricao:
+      "Aquilo que pode favorecer sua caminhada, fortalecer suas escolhas e ajudar a reconhecer caminhos que merecem ser aproveitados.",
   },
   oeste: {
     titulo: "Oeste",
-    tema: "Lado esquerdo: o que pede atenção",
-    descricao: "Herança, cobranças e tendências que podem atrapalhar quando não são cuidadas.",
+    tema: "O que pede atenção e cuidado",
+    descricao:
+      "Tendências, desafios e questões que merecem ser observados com consciência para que você possa agir com mais equilíbrio.",
   },
   centro: {
     titulo: "Centro",
-    tema: "Essência, cargo e momento de equilíbrio",
-    descricao: "O ponto que reúne a energia principal da leitura e mostra onde está o equilíbrio.",
+    tema: "Sua essência e seu ponto de equilíbrio",
+    descricao:
+      "O ponto que reúne a energia principal da leitura e ajuda a compreender como os diferentes aspectos da sua cabala se relacionam.",
   },
 };
 

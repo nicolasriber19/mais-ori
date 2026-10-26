@@ -16,12 +16,12 @@ export function Topo() {
         <Marca />
         <nav className="topo__nav" aria-label="Principal">
           <Link href="/#como-funciona">Como funciona</Link>
-          <Link href="/#cabala">A cabala</Link>
-          <Link href="/#areas">As cinco quedas</Link>
-          <Link href="/#perguntas">Perguntas</Link>
+          <Link href="/#cabala">Seu mapa de Odùs</Link>
+          <Link href="/#areas">As cinco jogadas</Link>
+          <Link href="/#perguntas">Dúvidas frequentes</Link>
         </nav>
         <Link href="/#amostra" className="botao botao--contorno botao--pequeno">
-          Amostra grátis
+          Experimente grátis
         </Link>
       </div>
     </header>

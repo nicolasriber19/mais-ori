@@ -40,7 +40,7 @@ export default function Amostra() {
               <span className="eyebrow">Consulta completa</span>
               <h2 style={{ fontSize: "1.9rem" }}>Os búzios cruzados com o seu mapa</h2>
               <p className="texto-suave">
-                Os cinco pontos da sua cabala explicados e cinco quedas dos búzios (amor, dinheiro, trabalho, saúde e
+                Os cinco pontos da sua cabala explicados e cinco jogadas de búzios (amor, dinheiro, trabalho, saúde e
                 espiritualidade), cada uma interpretada para você. Tudo em PDF no final.
               </p>
               <div className="linha-valor">
