@@ -3,6 +3,7 @@ import { AREAS } from "@/base/areas";
 import { POSICOES, SENTIDO_POSICAO } from "@/base/cabala";
 import { CabalaCruz } from "@/components/CabalaCruz";
 import { FormAmostra } from "@/components/FormAmostra";
+import { MesaDemo } from "@/components/MesaDemo";
 import { PRECO } from "@/lib/config";
 
 const CAMINHO = [
@@ -227,6 +228,23 @@ export default function Inicio() {
                 <p>{a.convite}</p>
               </article>
             ))}
+          </div>
+          <div className="mesa-demo">
+            <MesaDemo />
+            <div className="mesa-demo__texto">
+              <span className="eyebrow">O jogo de búzios</span>
+              <h3>É aqui que os búzios caem</h3>
+              <p className="texto-suave">
+                Na consulta completa, você embaralha e joga os 16 búzios cinco vezes, uma para cada área da sua vida. Os
+                búzios que caem abertos mostram o Odù que responde àquela jogada.
+              </p>
+              <p className="texto-suave">Experimente aqui como eles caem na peneira.</p>
+              <div>
+                <Link href="#amostra" className="botao botao--ouro">
+                  Começar minha consulta
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

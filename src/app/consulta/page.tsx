@@ -10,29 +10,13 @@ import { JogoBuzios } from "@/components/JogoBuzios";
 import { Leitura, problemaDa } from "@/components/Leitura";
 import { ESTATICO } from "@/lib/config";
 import { leituraDemo, textoAosPoucos } from "@/lib/demo";
+import { lancar } from "@/lib/lance";
 import { cabalaDe, primeiroNome } from "@/lib/pedido";
 import { useSessao, type Sessao } from "@/lib/sessao";
 
 type Etapa = "pronto" | "agitando" | "lendo" | "lida" | "falhou";
 
 const esperar = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
-function sortear(max: number): number {
-  const v = new Uint32Array(1);
-  crypto.getRandomValues(v);
-  return v[0] % max;
-}
-
-/** Sorteia o Odù (1 a 16, todos com a mesma chance) e quais búzios caem abertos. */
-function lancar(): { odu: number; abertos: number[] } {
-  const odu = sortear(16) + 1;
-  const ordem = Array.from({ length: 16 }, (_, i) => i);
-  for (let i = ordem.length - 1; i > 0; i--) {
-    const j = sortear(i + 1);
-    [ordem[i], ordem[j]] = [ordem[j], ordem[i]];
-  }
-  return { odu, abertos: ordem.slice(0, odu) };
-}
 
 export default function Consulta() {
   const router = useRouter();

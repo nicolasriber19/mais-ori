@@ -31,7 +31,7 @@ export function ConsultaCompleta({ sessao, cabala, novaConsulta }: { sessao: Ses
           <div className="acoes">
             <BaixarPdf sessao={sessao} cabala={cabala} />
             <button className="botao botao--contorno" onClick={novaConsulta}>
-              Fazer outra consulta
+              Jogar os búzios de novo
             </button>
           </div>
           {algumaDemo && (

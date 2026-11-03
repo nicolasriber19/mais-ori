@@ -288,6 +288,12 @@ p { margin: 0; }
 .area h3 { font-size: 1.3rem; }
 .area p { font-size: 0.9rem; color: var(--texto-suave); }
 
+.mesa-demo { display: grid; gap: 28px; margin-top: 48px; align-items: center; }
+@media (min-width: 960px) { .mesa-demo { grid-template-columns: 460px 1fr; gap: 56px; } }
+.mesa-demo .jogo__mesa { position: static; }
+.mesa-demo__texto { display: grid; gap: 16px; max-width: 520px; }
+.mesa-demo__texto h3 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+
 /* autora */
 .autora { display: grid; gap: 32px; align-items: center; }
 @media (min-width: 960px) {
