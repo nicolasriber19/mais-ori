@@ -8,6 +8,7 @@ import { getOdu } from "@/base/odus";
 import { CabalaCruz } from "@/components/CabalaCruz";
 import { Carregando, SemDados } from "@/components/Estados";
 import { GuiaCabala } from "@/components/GuiaCabala";
+import { JogoBuzios } from "@/components/JogoBuzios";
 import { Leitura } from "@/components/Leitura";
 import { MesaJogada } from "@/components/MesaJogada";
 import { TextoPonto } from "@/components/TextoPonto";
@@ -89,20 +90,25 @@ export default function Amostra() {
         </div>
 
         {feita && j.etapa === "pronto" ? (
-          <article className="cartao leitura">
-            <div className="leitura__area">
-              <span className="eyebrow">1ª jogada · {AREA_GRATIS.curto}</span>
+          <div className="jogo">
+            <div className="cartao jogo__mesa">
+              <JogoBuzios abertos={feita.abertos} agitando={false} jogada={0} />
+              <div className="resultado-queda">
+                <span className="resultado-queda__num">
+                  {feita.odu} {feita.odu === 1 ? "búzio aberto" : "búzios abertos"} · Odù {getOdu(feita.odu).numero}
+                </span>
+                <h2>{getOdu(feita.odu).nome}</h2>
+                <p>“{getOdu(feita.odu).sentencas[0]}”</p>
+              </div>
             </div>
-            <div className="resultado-queda" style={{ justifyItems: "start" }}>
-              <span className="resultado-queda__num">
-                {feita.odu} {feita.odu === 1 ? "búzio aberto" : "búzios abertos"} · Odù {getOdu(feita.odu).numero}
-              </span>
-              <h2>{getOdu(feita.odu).nome}</h2>
-              <p>“{getOdu(feita.odu).sentencas[0]}”</p>
-            </div>
-            <Leitura texto={feita.texto} />
-            <div className="acoes">{irParaCompleta}</div>
-          </article>
+            <article className="cartao leitura">
+              <div className="leitura__area">
+                <span className="eyebrow">1ª jogada · {AREA_GRATIS.curto}</span>
+              </div>
+              <Leitura texto={feita.texto} />
+              <div className="acoes">{irParaCompleta}</div>
+            </article>
+          </div>
         ) : (
           <MesaJogada j={j} sessao={sessao} cabala={cabala} area={AREA_GRATIS} ordem={1} depois={irParaCompleta} />
         )}
