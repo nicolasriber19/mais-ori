@@ -7,8 +7,8 @@ test("exemplo do PDF: 18/07/1997", () => {
   assert.deepEqual(r.pares, ["18", "07", "19", "97"]);
   assert.equal(r.somaEsquerda, 11);
   assert.equal(r.somaDireita, 31);
-  // Norte 11, Sul 4, lado esquerdo 15, lado direito 3, Centro 6
-  assert.deepEqual(r.cabala, { norte: 11, sul: 4, oeste: 15, leste: 3, centro: 6 });
+  // Norte 11, Sul 4, lado esquerdo 15, lado direito 3
+  assert.deepEqual(r.cabala, { norte: 11, sul: 4, oeste: 15, leste: 3 });
 });
 
 test("caso de teste combinado: Norte 3, Sul 4, Leste 14, Oeste 7", () => {
@@ -17,7 +17,6 @@ test("caso de teste combinado: Norte 3, Sul 4, Leste 14, Oeste 7", () => {
   assert.equal(r.cabala.sul, 4);
   assert.equal(r.cabala.oeste, 7);
   assert.equal(r.cabala.leste, 14);
-  assert.equal(r.cabala.centro, 10); // 3+4+7+14 = 28 → 2+8
 });
 
 test("redução: passou de 16 soma os algarismos", () => {

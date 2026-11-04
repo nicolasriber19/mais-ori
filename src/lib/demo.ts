@@ -17,7 +17,7 @@ export function leituraDemo(cabala: Cabala, queda: Queda): string {
   const norte = getOdu(cabala.norte).cabala.norte;
   const leste = getOdu(cabala.leste).cabala.leste;
   const oeste = getOdu(cabala.oeste).cabala.oeste;
-  const centro = getOdu(cabala.centro).cabala.centro;
+  const sul = getOdu(cabala.sul).cabala.sul;
 
   return `## Mensagem do Odù
 ${odu.nome} caiu para ${area.titulo.toLowerCase()}. ${odu.queda.geral} Como diz a sentença: "${odu.sentencas[0]}" Para esta área, ele aponta: ${juntar(odu.queda[queda.area].slice(0, 3))}.
@@ -29,7 +29,7 @@ Seu jeito de ser é marcado por ${juntar(norte.palavras)}. A seu favor estão ${
 Atenção a ${juntar(odu.queda.alertas.slice(0, 3))}.
 
 ## Conselho
-${centro.resumo}`;
+${sul.resumo}`;
 }
 
 /** Entrega o texto em pedaços, como a IA faria. Usado pela rota e pela versão estática. */

@@ -1,5 +1,5 @@
 // Roteiro da guia virtual: falas prontas, montadas da base, que explicam a cabala ponto a ponto.
-// Na amostra ela conta só o Norte, aponta a jogada grátis e convida para a consulta; na consulta completa explica os cinco pontos.
+// Na amostra ela conta só o Norte, aponta a jogada grátis e convida para a consulta; na consulta completa explica os quatro pontos.
 
 import type { Cabala, Posicao } from "@/base/cabala";
 import { getOdu } from "@/base/odus";
@@ -23,7 +23,6 @@ const ABERTURA_POSICAO: Record<Posicao, (odu: string, n: number) => string> = {
   leste: (odu, n) => `No Leste, o lado que te favorece, está ${odu}, o Odù ${n}.`,
   oeste: (odu, n) => `Agora o Oeste, o lado que pede atenção: ${odu}, o Odù ${n}.`,
   sul: (odu, n) => `No Sul, que são os seus passos e o caminho que você já fez, está ${odu}, o Odù ${n}.`,
-  centro: (odu, n) => `E no Centro, a sua essência, está ${odu}, o Odù ${n}.`,
 };
 
 /** As duas primeiras frases do resumo, para a fala caber no balão. */
@@ -49,13 +48,13 @@ export function falasDoGuia(nome: string, cabala: Cabala, modo: "amostra" | "com
     return [
       {
         destaque: "todos",
-        texto: `${oi} Que bom te ver aqui. Montei o seu mapa com a sua data de nascimento: são cinco pontos, e cada um recebeu um dos 16 Odùs. Vem comigo que eu te conto o seu Norte.`,
+        texto: `${oi} Que bom te ver aqui. Montei o seu mapa com a sua data de nascimento: são quatro pontos, e cada um recebeu um dos 16 Odùs. Vem comigo que eu te conto o seu Norte.`,
         voz: "amostra-abertura.mp3",
       },
       falaDoPonto(cabala, "norte"),
       {
         destaque: "todos",
-        texto: "Logo abaixo você já pode fazer a sua primeira jogada, para o amor. Os outros quatro pontos do seu mapa estão na consulta completa: lá eu te explico cada um, e você joga os búzios para o dinheiro, o trabalho, a saúde e a espiritualidade.",
+        texto: "Logo abaixo você já pode fazer a sua primeira jogada, para o amor. Os outros três pontos do seu mapa estão na consulta completa: lá eu te explico cada um, e você joga os búzios para o dinheiro, o trabalho, a saúde e a espiritualidade.",
         voz: "amostra-convite.mp3",
         acao: "checkout",
       },
@@ -65,14 +64,13 @@ export function falasDoGuia(nome: string, cabala: Cabala, modo: "amostra" | "com
   return [
     {
       destaque: "todos",
-      texto: `${oi} Aqui está o seu mapa completo. São cinco pontos, cada um com um Odù, e eu vou te mostrar um por um.`,
+      texto: `${oi} Aqui está o seu mapa completo. São quatro pontos, cada um com um Odù, e eu vou te mostrar um por um.`,
       voz: "completo-abertura.mp3",
     },
     falaDoPonto(cabala, "norte"),
     falaDoPonto(cabala, "leste"),
     falaDoPonto(cabala, "oeste"),
     falaDoPonto(cabala, "sul"),
-    falaDoPonto(cabala, "centro"),
     {
       destaque: "todos",
       texto: "Esse é o seu mapa. Logo abaixo estão as cinco jogadas de búzios, cada uma lida para você. Se quiser, salve tudo em PDF para reler quando precisar.",

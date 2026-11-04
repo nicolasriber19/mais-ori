@@ -1,6 +1,6 @@
 # +Ori
 
-Consulta de búzios com a Cabala dos Odùs: a pessoa informa nome e data de nascimento, o site calcula a cabala (Norte, Sul, Leste, Oeste e Centro), ela joga os búzios cinco vezes (amor, dinheiro, trabalho, saúde e espiritualidade) e cada queda é interpretada pela IA cruzando o Odù que caiu com a cabala, as regras de cruzamento e a voz autoral da mãe. No final, a consulta pode ser salva em PDF.
+Consulta de búzios com a Cabala dos Odùs: a pessoa informa nome e data de nascimento, o site calcula a cabala (Norte, Sul, Leste e Oeste), ela joga os búzios cinco vezes (amor, dinheiro, trabalho, saúde e espiritualidade) e cada jogada é interpretada pela IA cruzando o Odù que caiu com a cabala, as regras de cruzamento e a voz autoral da mãe. No final, a consulta pode ser salva em PDF.
 
 Primeiro bloco, conforme o pedido de 23/10/2026. Pagamento ainda simulado.
 
@@ -59,7 +59,6 @@ Se mudar o texto de uma fala em `src/lib/guia.ts`, o áudio correspondente preci
 - Textos do Sul de Owónrin (11) e de Ejilaxebora (12): no PDF vieram com o quadro de "Momento de equilíbrio".
 - Textos do Norte e do Leste de Ejiologbon (13) e de Iká (14): no PDF estão cortados.
 - Confirmar Leste = lado direito (positivo) e Oeste = lado esquerdo (negativo). As fichas dos Odùs e o caso de teste usam assim; a página "Mapa de interpretação" do PDF desenha invertido.
-- Confirmar o Centro: o PDF calcula um quinto ponto (Centro), além dos quatro citados nas mensagens.
 - Quando a soma das unidades dá 0 (ex.: 10/10/2000), o site usa 16. Confirmar a regra.
 - Preço da consulta (hoje R$ 47,00, provisório), nome e foto dela na seção "Por trás do +Ori".
 - Pagamento (Pix/cartão) e a segunda etapa: banhos, parcerias, oferendas e proteções.

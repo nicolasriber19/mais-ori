@@ -4,15 +4,15 @@
 // 2. Soma-se a coluna da esquerda (dezenas) → Norte; a coluna da direita (unidades) → Sul.
 // 3. Norte + Sul → lado esquerdo (negativo) = Oeste.
 // 4. Norte + Sul + Oeste → lado direito (positivo) = Leste.
-// 5. Norte + Sul + Oeste + Leste → Centro.
 // Em todos os passos: passou de 16, somam-se os algarismos.
+// O material também soma os quatro num Centro, mas a mãe não usa o Centro na leitura (04/11/2026).
 //
 // Leste/Oeste seguem as fichas dos 16 Odùs (Leste = lado direito/positivo, Oeste = lado esquerdo/negativo),
 // que é também a convenção do caso de teste combinado (Norte 3, Sul 4, Leste 14, Oeste 7).
 
-export type Posicao = "norte" | "sul" | "leste" | "oeste" | "centro";
+export type Posicao = "norte" | "sul" | "leste" | "oeste";
 
-export const POSICOES: Posicao[] = ["norte", "sul", "leste", "oeste", "centro"];
+export const POSICOES: Posicao[] = ["norte", "sul", "leste", "oeste"];
 
 export const SENTIDO_POSICAO: Record<Posicao, { titulo: string; tema: string; descricao: string }> = {
   norte: {
@@ -37,12 +37,6 @@ export const SENTIDO_POSICAO: Record<Posicao, { titulo: string; tema: string; de
     tema: "O que pede atenção e cuidado",
     descricao:
       "Tendências, desafios e questões que merecem ser observados com consciência para que você possa agir com mais equilíbrio.",
-  },
-  centro: {
-    titulo: "Centro",
-    tema: "Sua essência e seu ponto de equilíbrio",
-    descricao:
-      "O ponto que reúne a energia principal da leitura e ajuda a compreender como os diferentes aspectos da sua cabala se relacionam.",
   },
 };
 
@@ -86,7 +80,6 @@ export function calcularCabala(dia: number, mes: number, ano: number): CalculoCa
   const sul = reduzir(somaDireita);
   const oeste = reduzir(norte + sul);
   const leste = reduzir(norte + sul + oeste);
-  const centro = reduzir(norte + sul + oeste + leste);
 
-  return { cabala: { norte, sul, leste, oeste, centro }, pares, somaEsquerda, somaDireita };
+  return { cabala: { norte, sul, leste, oeste }, pares, somaEsquerda, somaDireita };
 }

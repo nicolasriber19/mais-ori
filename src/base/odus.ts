@@ -1,6 +1,6 @@
 // Base dos 16 Odùs do +Ori.
 //
-// - `cabala`: o que cada Odù diz em cada posição da cabala (Norte, Sul, Leste, Oeste, Centro).
+// - `cabala`: o que cada Odù diz em cada posição da cabala (Norte, Sul, Leste, Oeste).
 //   Resumo com palavras próprias a partir do material "Cabala dos Odùs".
 // - `queda`: temas do Odù quando ele cai na consulta, organizados nas cinco áreas do jogo.
 //   Resumo com palavras próprias a partir do material "Os 16 Odus Meji Ilustrados".
@@ -48,10 +48,6 @@ export const ODUS: Odu[] = [
         resumo: "Um caminho marcado por iniciativa, coragem e experiências intensas que deixaram aprendizados. Pede que a pessoa firme os pés, reconheça o que já viveu e siga com mais consciência: os passos têm força, mas precisam de direção e base.",
         palavras: ["caminho", "base", "passos", "firmeza"],
       },
-      centro: {
-        resumo: "Momento de controlar impulsos, evitar conflitos e buscar harmonia interior. Paciência, perdão e fortalecimento espiritual transformam dificuldade em crescimento. Cuidar da cabeça (Ori) e equilibrar razão e emoção.",
-        palavras: ["paciência", "harmonia", "perdão", "equilíbrio"],
-      },
     },
     queda: {
       geral: "Movimento e mudança: acontecimentos rápidos, viradas de caminho e superação de crises, pedindo prudência em cada decisão.",
@@ -84,10 +80,6 @@ export const ODUS: Odu[] = [
       sul: {
         resumo: "Pede que a pessoa firme os passos e escolha bem os caminhos: colocar limites, não se dividir entre direções opostas e avançar com prudência. O caminho se constrói com constância, sabendo onde se pisa para não voltar atrás.",
         palavras: ["caminho", "passos", "limites", "firmeza"],
-      },
-      centro: {
-        resumo: "Controlar os impulsos e buscar harmonia, sobretudo com irmãos, familiares e pessoas próximas. Paciência, perdão e fortalecimento espiritual; medir as palavras e manter a serenidade diante das diferenças.",
-        palavras: ["paciência", "harmonia", "perdão", "equilíbrio"],
       },
     },
     queda: {
@@ -122,10 +114,6 @@ export const ODUS: Odu[] = [
         resumo: "Um caminho de experiências que trouxeram maturidade. Cada passo, mesmo com dificuldades e atrasos, fortaleceu a base e ensinou o valor do tempo e da disciplina. Há firmeza para construir um futuro mais estável com o que foi vivido.",
         palavras: ["caminho", "base", "passos", "firmeza"],
       },
-      centro: {
-        resumo: "Unir experiência e renovação: equilibrar tradição e mudança, aprender com o passado sem ficar preso a ele. Paciência, planejamento e escuta dos mais velhos ajudam a decidir com consciência.",
-        palavras: ["paciência", "planejamento", "discernimento", "equilíbrio"],
-      },
     },
     queda: {
       geral: "Conflitos que podem ficar sérios e a importância de agir com cabeça fria, revisar papéis e se proteger antes de grandes passos.",
@@ -158,10 +146,6 @@ export const ODUS: Odu[] = [
       sul: {
         resumo: "Um caminho que ensinou cautela com o que se fala e com quem se confia. Decepções e verdades que vieram à tona fortaleceram a base. O aprendizado do passado guia escolhas mais sábias e seguras.",
         palavras: ["caminho", "base", "passos", "firmeza"],
-      },
-      centro: {
-        resumo: "Cuidar do que se fala, pensar antes de agir e não entrar em fofocas. Equilibrar curiosidade e discrição; com paciência e autoconhecimento, separar o que é verdade do que é ilusão. Ouvir mais e observar.",
-        palavras: ["paciência", "discernimento", "discrição", "equilíbrio"],
       },
     },
     queda: {
@@ -196,10 +180,6 @@ export const ODUS: Odu[] = [
         resumo: "Um caminho de oportunidades e mudanças importantes de destino. Os passos trouxeram sensibilidade e amadurecimento, mesmo com chances que não foram aproveitadas. A base se fortalece quando a pessoa honra o que viveu e a proteção que recebeu.",
         palavras: ["caminho", "base", "passos", "firmeza"],
       },
-      centro: {
-        resumo: "Cuidar das emoções sem alimentar mágoa nem rancor. Reconhecer oportunidades perdidas, equilibrar o que se sente com o que se faz e agradecer a proteção recebida. Pede limpeza interior e valorização de si.",
-        palavras: ["gratidão", "discernimento", "perdão", "equilíbrio"],
-      },
     },
     queda: {
       geral: "Emoções à flor da pele e oportunidades que se apresentam, pedindo autocontrole e força interior para não desistir.",
@@ -233,10 +213,6 @@ export const ODUS: Odu[] = [
         resumo: "Um caminho que ensinou, muitas vezes pela dificuldade, o valor da cautela, da palavra e da responsabilidade. Passos entre perdas, dívidas e desconfianças viraram base. Seguir honrando compromissos e escolhendo melhor em quem confiar.",
         palavras: ["caminho", "base", "passos", "firmeza"],
       },
-      centro: {
-        resumo: "Equilibrar fala, desejos e decisões. Honrar a palavra, evitar discussões inúteis e não se deixar levar pela cobiça ou pela desconfiança. Pede fé, responsabilidade e cautela com promessas e acordos.",
-        palavras: ["paciência", "discernimento", "honestidade", "equilíbrio"],
-      },
     },
     queda: {
       geral: "Alegria e fartura possíveis, mas com inimigos rondando e a necessidade de cuidar da palavra, dos contratos e dos excessos.",
@@ -269,10 +245,6 @@ export const ODUS: Odu[] = [
       sul: {
         resumo: "Um caminho de experiências difíceis, ambientes pesados e quedas que viraram aprendizado. Pede atenção aos lugares por onde se anda e às relações. Mostra recuperação depois das perdas, transformando dor e desconfiança em base.",
         palavras: ["caminho", "base", "passos", "firmeza"],
-      },
-      centro: {
-        resumo: "Prudência e discrição. Manter o equilíbrio emocional, vigiar o que se diz e controlar reações impulsivas; nem tudo precisa ser esclarecido. Não deixar o medo, as fofocas e as pressões dominarem a mente.",
-        palavras: ["prudência", "discrição", "discernimento", "equilíbrio"],
       },
     },
     queda: {
@@ -308,10 +280,6 @@ export const ODUS: Odu[] = [
         resumo: "Um caminho de sacrifício, responsabilidade e renúncias pelos outros, com passos dados entre esforço e lágrimas. A base se fortalece quando a pessoa honra a própria cabeça, respeita os mais velhos e deixa de carregar sozinha o peso de todos.",
         palavras: ["caminho", "base", "passos", "firmeza"],
       },
-      centro: {
-        resumo: "Cuidar da cabeça, da fé e da própria dignidade. Equilibrar sacrifício e limite, servir sem se abandonar. Humildade, respeito aos mais velhos e firmeza para não carregar tristezas em silêncio.",
-        palavras: ["humildade", "respeito", "discernimento", "equilíbrio"],
-      },
     },
     queda: {
       geral: "A cabeça no comando: responsabilidade, ética e cuidado com o Ori, com proteção para quem age com retidão.",
@@ -344,10 +312,6 @@ export const ODUS: Odu[] = [
       sul: {
         resumo: "Um caminho de provas e quebras de confiança que ensinaram a vigiar ambientes e companhias. A base se fortalece quando a pessoa cuida do que é seu, aprende com os alertas do passado e não repete caminhos perigosos.",
         palavras: ["caminho", "base", "passos", "firmeza"],
-      },
-      centro: {
-        resumo: "Controlar a revolta, a teimosia e o gênio forte, sem agir por impulso nem alimentar ofensas e vinganças. Equilibrar força e prudência, observar quem entra em casa e em quem se confia, esfriar a cabeça e aceitar conselhos.",
-        palavras: ["discernimento", "prudência", "proteção", "equilíbrio"],
       },
     },
     queda: {
@@ -382,10 +346,6 @@ export const ODUS: Odu[] = [
         resumo: "Um caminho de espera, aprendizado e reorganização. Atrasos e obstáculos ensinaram paciência, disciplina e responsabilidade. É um convite a manter o foco e concluir o que foi iniciado, usando a experiência como guia.",
         palavras: ["caminho", "aprendizado", "disciplina", "firmeza"],
       },
-      centro: {
-        resumo: "Equilibrar mente e ação, sem ficar preso a expectativas. Organizar os pensamentos, assumir responsabilidades e pôr em prática o que foi planejado: paciência, sim, mas com disciplina para transformar intenção em resultado.",
-        palavras: ["disciplina", "responsabilidade", "ação", "equilíbrio"],
-      },
     },
     queda: {
       geral: "Paz, recolhimento e conclusão: o caminho se abre quando a pessoa organiza a vida e termina o que começou.",
@@ -418,10 +378,6 @@ export const ODUS: Odu[] = [
       sul: {
         resumo: "Aprender a escolher onde colocar a energia, parar de insistir no que não rende e simplificar a rotina, trocando agitação por direção.",
         palavras: ["foco", "direção", "consciência", "equilíbrio"],
-      },
-      centro: {
-        resumo: "Organizar os pensamentos, evitar a dispersão e direcionar a energia para o que traz resultado. Filtrar ideias, concluir o que começou e agir com disciplina; paciência e equilíbrio transformam movimento em progresso.",
-        palavras: ["disciplina", "organização", "foco", "equilíbrio"],
       },
     },
     queda: {
@@ -457,10 +413,6 @@ export const ODUS: Odu[] = [
         resumo: "Discernir quais batalhas merecem energia e trocar o confronto pela estratégia, protegendo a paz interior e usando a força para construir.",
         palavras: ["discernimento", "paz", "sabedoria", "equilíbrio"],
       },
-      centro: {
-        resumo: "Escolher bem onde colocar a energia, evitar conflitos desnecessários e agir com disciplina e estratégia. A paz também é uma vitória: a verdadeira força está em saber o que vale a pena.",
-        palavras: ["disciplina", "estratégia", "discernimento", "equilíbrio"],
-      },
     },
     queda: {
       geral: "Justiça e retidão: escolher as batalhas, cumprir a palavra e manter a paz para o caminho seguir aberto.",
@@ -494,10 +446,6 @@ export const ODUS: Odu[] = [
       sul: {
         resumo: "Um caminho feito de mudanças, encerramentos e recomeços, em que muitas coisas chegaram ao fim e pediram novas escolhas. Os passos se firmam quando a pessoa deixa a indecisão e assume a própria direção.",
         palavras: ["caminho", "mudança", "passos", "firmeza"],
-      },
-      centro: {
-        resumo: "Reconhecer quando algo se esgotou e não pode continuar. Aceitar mudanças, ouvir conselhos sem depender deles e transformar boas ideias em ação, unindo convivência e autonomia.",
-        palavras: ["decisão", "autonomia", "consciência", "equilíbrio"],
       },
     },
     queda: {
@@ -533,10 +481,6 @@ export const ODUS: Odu[] = [
         resumo: "Um caminho de confrontos, riscos e decisões sob pressão, que mostrou que agir por impulso pode custar caro. A base se fortalece quando a pessoa se prepara, usa a cabeça antes da força e espera o momento certo.",
         palavras: ["caminho", "base", "passos", "firmeza"],
       },
-      centro: {
-        resumo: "Pensar duas vezes antes de decidir, não aceitar provocações e aguardar o momento certo. Conter o gênio e a impetuosidade, preparar os recursos e usar a energia com estratégia: a força conquista quando é guiada pela prudência.",
-        palavras: ["prudência", "estratégia", "preparo", "equilíbrio"],
-      },
     },
     queda: {
       geral: "Abrigar-se e esperar a hora certa: liderança com sabedoria, planejamento e encerramento de uma etapa para começar outra.",
@@ -571,10 +515,6 @@ export const ODUS: Odu[] = [
         resumo: "Firmar os passos, escolher bem com quem caminha e não voltar sempre ao mesmo lugar. Colocar limites e evitar caminhos que já causaram dor: a proteção está em saber para onde ir, quem levar e quando seguir sem se prender ao passado.",
         palavras: ["caminho", "passos", "limites", "firmeza"],
       },
-      centro: {
-        resumo: "Equilibrar bondade e discernimento: ouvir o coração sem perder a razão, acolher sem se anular. Cuidar de si, reconhecer os próprios limites e proteger o que construiu, sem repetir erros.",
-        palavras: ["discernimento", "limites", "paz", "equilíbrio"],
-      },
     },
     queda: {
       geral: "A força que movimenta também paralisa: bondade que precisa de limites e de olhar atento para as pessoas ao redor.",
@@ -608,10 +548,6 @@ export const ODUS: Odu[] = [
       sul: {
         resumo: "Firmar os passos e escolher bem os caminhos, colocando limites e avançando com prudência. Cada passo precisa de base; a firmeza traz segurança e realizações duradouras.",
         palavras: ["caminho", "passos", "limites", "firmeza"],
-      },
-      centro: {
-        resumo: "Coerência entre o que se pensa, o que se diz e o que se faz. Equilibrar gentileza e autoridade, afeto e responsabilidade, talento e disciplina, com os pés no chão e sem se deixar levar pela opinião dos outros.",
-        palavras: ["coerência", "determinação", "responsabilidade", "equilíbrio"],
       },
     },
     queda: {

@@ -18,7 +18,6 @@
   --leste: #3b70c4;
   --oeste: #7b51b2;
   --sul: #b5443c;
-  --centro: #8c5b33;
 
   --raio: 18px;
   --raio-p: 12px;
@@ -198,7 +197,6 @@ p { margin: 0; }
 }
 .cor-norte { background: var(--norte); } .cor-sul { background: var(--sul); }
 .cor-leste { background: var(--leste); } .cor-oeste { background: var(--oeste); }
-.cor-centro { background: var(--centro); }
 
 /* cruz da cabala */
 .cruz {
@@ -211,7 +209,7 @@ p { margin: 0; }
 .cruz__pos { position: relative; z-index: 1; display: grid; justify-items: center; text-align: center; gap: 6px; padding: 14px 6px; border-radius: 16px; background: rgba(20, 15, 11, 0.9); border: 1px solid var(--borda); }
 .cruz__pos--norte { grid-column: 2; grid-row: 1; }
 .cruz__pos--oeste { grid-column: 1; grid-row: 2; }
-.cruz__pos--centro { grid-column: 2; grid-row: 2; border-color: var(--borda-forte); }
+.cruz__meio { grid-column: 2; grid-row: 2; align-self: center; justify-self: center; position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: var(--ouro); font-size: 1.1rem; background: var(--fundo-2); border: 1px solid var(--borda-forte); }
 .cruz__pos--leste { grid-column: 3; grid-row: 2; }
 .cruz__pos--sul { grid-column: 2; grid-row: 3; }
 .cruz__titulo { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--texto-suave); font-weight: 600; }

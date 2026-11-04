@@ -57,7 +57,7 @@ export default function Amostra() {
               <span className="eyebrow">Consulta completa</span>
               <h2 style={{ fontSize: "1.9rem" }}>Os búzios cruzados com o seu mapa</h2>
               <p className="texto-suave">
-                Os cinco pontos da sua cabala explicados e as cinco jogadas de búzios (amor, dinheiro, trabalho, saúde e
+                Os quatro pontos da sua cabala explicados e as cinco jogadas de búzios (amor, dinheiro, trabalho, saúde e
                 espiritualidade), cada uma interpretada para você. A primeira, do amor, você faz aqui de graça. Tudo em
                 PDF no final.
               </p>
@@ -76,7 +76,6 @@ export default function Amostra() {
             <TextoPonto posicao="leste" odu={cabala.leste} bloqueado />
             <TextoPonto posicao="oeste" odu={cabala.oeste} bloqueado />
             <TextoPonto posicao="sul" odu={cabala.sul} bloqueado />
-            <TextoPonto posicao="centro" odu={cabala.centro} bloqueado />
           </div>
         </div>
 

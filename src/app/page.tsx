@@ -51,7 +51,7 @@ const BENEFICIOS = [
   {
     titulo: "Conheça seu mapa espiritual",
     texto:
-      "Compreenda os cinco pontos da sua Cabala dos Odùs e o que eles revelam sobre suas características, tendências e caminhos.",
+      "Compreenda os quatro pontos da sua Cabala dos Odùs e o que eles revelam sobre suas características, tendências e caminhos.",
   },
   {
     titulo: "Cinco jogadas, cinco áreas da vida",

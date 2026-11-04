@@ -34,7 +34,6 @@ const COR: Record<string, string> = {
   sul: "#b5443c",
   leste: "#3b70c4",
   oeste: "#7b51b2",
-  centro: "#8c5b33",
 };
 
 const s = StyleSheet.create({

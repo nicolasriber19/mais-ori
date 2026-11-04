@@ -34,7 +34,7 @@ export default function Checkout() {
             <h2 style={{ fontSize: "1.7rem" }}>{sessao.nome}</h2>
             <p className="texto-suave">Nascimento em {sessao.nascimento}</p>
             <ul className="limpa preco__itens">
-              <li>Mapa completo da Cabala dos Odùs (cinco pontos)</li>
+              <li>Mapa completo da Cabala dos Odùs (quatro pontos)</li>
               <li>Cinco jogadas de búzios, uma para cada área da vida</li>
               <li>Interpretação individual de cada jogada</li>
               <li>Consulta completa em PDF</li>

@@ -1,13 +1,12 @@
 import { POSICOES, SENTIDO_POSICAO, type Cabala, type Posicao } from "@/base/cabala";
 import { getOdu } from "@/base/odus";
 
-const LETRA: Record<Posicao, string> = { norte: "N", sul: "S", leste: "L", oeste: "O", centro: "C" };
+const LETRA: Record<Posicao, string> = { norte: "N", sul: "S", leste: "L", oeste: "O" };
 const CURTO: Record<Posicao, string> = {
   norte: "Ori e destino",
   sul: "Sua história",
   leste: "Forças e oportunidades",
   oeste: "Atenção e cuidado",
-  centro: "Ponto de equilíbrio",
 };
 
 export function CabalaCruz({ cabala, destaque }: { cabala?: Cabala; destaque?: Posicao | "todos" | null }) {
@@ -15,8 +14,11 @@ export function CabalaCruz({ cabala, destaque }: { cabala?: Cabala; destaque?: P
   return (
     <ul
       className={`cruz limpa${destacando ? " cruz--destacando" : ""}`}
-      aria-label={cabala ? "Sua Cabala dos Odùs" : "As cinco posições da cabala"}
+      aria-label={cabala ? "Sua Cabala dos Odùs" : "As quatro posições da cabala"}
     >
+      <li className="cruz__meio" aria-hidden="true">
+        ✦
+      </li>
       {POSICOES.map((p) => (
         <li key={p} className={`cruz__pos cruz__pos--${p}${destaque === p ? " cruz__pos--ativo" : ""}`}>
           <span className={`bolinha cor-${p}`}>{cabala ? cabala[p] : LETRA[p]}</span>
