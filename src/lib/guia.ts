@@ -1,5 +1,5 @@
 // Roteiro da guia virtual: falas prontas, montadas da base, que explicam a cabala ponto a ponto.
-// Na amostra ela conta só o Norte e convida para a consulta; na consulta completa explica os cinco pontos.
+// Na amostra ela conta só o Norte, aponta a jogada grátis e convida para a consulta; na consulta completa explica os cinco pontos.
 
 import type { Cabala, Posicao } from "@/base/cabala";
 import { getOdu } from "@/base/odus";
@@ -55,7 +55,7 @@ export function falasDoGuia(nome: string, cabala: Cabala, modo: "amostra" | "com
       falaDoPonto(cabala, "norte"),
       {
         destaque: "todos",
-        texto: "Os outros quatro pontos do seu mapa estão esperando por você na consulta completa. Lá eu te explico cada um e jogo os búzios para o amor, o dinheiro, o trabalho, a saúde e a espiritualidade.",
+        texto: "Logo abaixo você já pode fazer a sua primeira jogada, para o amor. Os outros quatro pontos do seu mapa estão na consulta completa: lá eu te explico cada um, e você joga os búzios para o dinheiro, o trabalho, a saúde e a espiritualidade.",
         voz: "amostra-convite.mp3",
         acao: "checkout",
       },

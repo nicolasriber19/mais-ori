@@ -1,4 +1,4 @@
-// Sorteio de uma jogada: usado na consulta e na mesa de demonstração da página inicial.
+// Sorteio de uma jogada: usado na amostra e na consulta completa.
 
 function sortear(max: number): number {
   const v = new Uint32Array(1);
