@@ -24,10 +24,17 @@ const texto = localFont({
   display: "swap",
 });
 
+const TITULO = "+Ori · Consulta de búzios com a sua Cabala dos Odùs";
+const DESCRICAO =
+  "Acolhimento, clareza e direcionamento espiritual: cinco jogadas de búzios cruzadas com a sua Cabala dos Odùs, uma para cada área da vida.";
+
+// Ícone e imagem de prévia do link vêm dos arquivos icon.png, apple-icon.png e opengraph-image.jpg desta pasta.
 export const metadata: Metadata = {
-  title: "+Ori · Consulta de búzios com a sua Cabala dos Odùs",
-  description:
-    "Acolhimento, clareza e direcionamento espiritual: cinco jogadas de búzios cruzadas com a sua Cabala dos Odùs, uma para cada área da vida.",
+  metadataBase: new URL("https://nicolasriber19.github.io"),
+  title: TITULO,
+  description: DESCRICAO,
+  openGraph: { title: TITULO, description: DESCRICAO, siteName: "+Ori", locale: "pt_BR", type: "website" },
+  twitter: { card: "summary_large_image", title: TITULO, description: DESCRICAO },
 };
 
 export const viewport: Viewport = { themeColor: "#0e0a07" };

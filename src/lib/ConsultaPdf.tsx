@@ -1,4 +1,4 @@
-import { Document, Font, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import { Document, Font, Image, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
 import { AREAS } from "@/base/areas";
 import { POSICOES, SENTIDO_POSICAO, type Cabala } from "@/base/cabala";
 import { getOdu } from "@/base/odus";
@@ -6,7 +6,10 @@ import { partirSecoes } from "@/components/Leitura";
 import type { Sessao } from "./sessao";
 
 let fontesProntas = false;
+// Endereço do site (com o basePath), de onde o PDF busca as fontes e o selo da marca.
+let origemPdf = "";
 export function registrarFontes(origem: string) {
+  origemPdf = origem;
   if (fontesProntas) return;
   Font.register({
     family: "Cormorant",
@@ -42,6 +45,8 @@ const s = StyleSheet.create({
   // A Cormorant desenha abaixo da caixa de linha padrão do react-pdf: os títulos levam lineHeight próprio.
   marca: { fontFamily: "Cormorant", fontWeight: 600, fontSize: 30, lineHeight: 1.35, color: "#2a1f15" },
   marcaMais: { color: "#b08a45" },
+  marcaLinha: { flexDirection: "row", alignItems: "center" },
+  selo: { width: 34, height: 34, marginRight: 10 },
   sub: { fontSize: 9, color: "#7a6a52", letterSpacing: 1.2, textTransform: "uppercase" },
   titulo: { fontFamily: "Cormorant", fontWeight: 600, fontSize: 26, lineHeight: 1.4, marginBottom: 6 },
   dados: { fontSize: 10, color: "#6b5c47", marginBottom: 18 },
@@ -75,9 +80,12 @@ export function ConsultaPdf({ sessao, cabala }: { sessao: Sessao; cabala: Cabala
     <Document title={`+Ori · Consulta de ${sessao.nome}`} author="+Ori" language="pt-BR">
       <Page size="A4" style={s.pagina}>
         <View style={s.topo}>
-          <Text style={s.marca}>
-            <Text style={s.marcaMais}>+</Text>Ori
-          </Text>
+          <View style={s.marcaLinha}>
+            <Image src={`${origemPdf}/marca/emblema-selo.png`} style={s.selo} />
+            <Text style={s.marca}>
+              <Text style={s.marcaMais}>+</Text>Ori
+            </Text>
+          </View>
           <Text style={s.sub}>Consulta de búzios · Cabala dos Odùs</Text>
         </View>
         <Text style={s.titulo}>Consulta de {sessao.nome}</Text>

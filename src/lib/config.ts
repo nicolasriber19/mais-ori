@@ -12,3 +12,10 @@ export const GUIA_MIDIA = {
   parada: `${BASE_PATH}/guia/mae-parada.mp4`,
   falando: null as string | null,
 };
+
+// Logo do +Ori (em public/marca, gerada da logo original em material/logo-original.jpg).
+// O PDF usa marca/emblema-selo.png, em PNG porque o react-pdf não lê WebP.
+export const MARCA = {
+  logo: `${BASE_PATH}/marca/logo.webp`,
+  emblema: `${BASE_PATH}/marca/emblema.webp`,
+};

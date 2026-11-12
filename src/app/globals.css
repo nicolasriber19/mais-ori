@@ -90,7 +90,8 @@ p { margin: 0; }
 .topo__nav a:hover { color: var(--creme); }
 @media (min-width: 900px) { .topo__nav { display: flex; } }
 
-.marca { display: inline-flex; align-items: baseline; gap: 1px; font-family: var(--font-display), serif; color: var(--creme); line-height: 1; }
+.marca { display: inline-flex; align-items: center; gap: 1px; font-family: var(--font-display), serif; color: var(--creme); line-height: 1; }
+.marca__emblema { width: auto; height: 40px; margin-right: 8px; }
 .marca__mais { color: var(--ouro); font-size: 1.9rem; font-weight: 600; transform: translateY(-1px); }
 .marca__ori { font-size: 2.05rem; font-weight: 600; letter-spacing: 0.02em; }
 .marca:hover { color: var(--creme); }
@@ -143,6 +144,8 @@ p { margin: 0; }
 @media (min-width: 960px) { .heroi { padding: 88px 0 104px; } .heroi__grade { grid-template-columns: 1.15fr 0.85fr; gap: 64px; } }
 .heroi__texto { display: grid; gap: 22px; }
 .heroi__texto h1 em { font-style: italic; color: var(--ouro-claro); font-weight: 500; }
+.heroi__logo { width: clamp(130px, 16vw, 180px); height: auto; animation: surgir 0.9s ease-out both; }
+@keyframes surgir { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .heroi__lead { font-size: 1.12rem; color: var(--texto-suave); max-width: 560px; }
 .heroi__nota { color: var(--texto-fraco); font-size: 0.88rem; }
 .heroi__caminho { display: grid; gap: 14px; padding-top: 22px; border-top: 1px solid var(--borda); max-width: 600px; }
@@ -329,6 +332,7 @@ p { margin: 0; }
 .rodape { border-top: 1px solid var(--borda); padding: 40px 0 48px; color: var(--texto-fraco); font-size: 0.85rem; }
 .rodape__linha { display: grid; gap: 18px; }
 @media (min-width: 720px) { .rodape__linha { grid-template-columns: auto 1fr; gap: 40px; align-items: start; } }
+.rodape__logo { width: 110px; height: auto; }
 
 /* ---------- páginas internas ---------- */
 .pagina { padding: 40px 0 88px; }
@@ -413,7 +417,7 @@ p { margin: 0; }
 @keyframes pulso { 0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .peneira--agitando, .cursor::after, .carregando i, .guia__bolha, .guia__cursor, .guia__avatar--falando { animation: none; }
+  .peneira--agitando, .cursor::after, .carregando i, .guia__bolha, .guia__cursor, .guia__avatar--falando, .heroi__logo { animation: none; }
   .cruz__pos { transition: none; }
   .buzio { transition: none; }
 }

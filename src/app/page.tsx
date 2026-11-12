@@ -4,7 +4,7 @@ import { POSICOES, SENTIDO_POSICAO } from "@/base/cabala";
 import { CabalaCruz } from "@/components/CabalaCruz";
 import { FormAmostra } from "@/components/FormAmostra";
 import { MesaVitrine } from "@/components/MesaVitrine";
-import { PRECO } from "@/lib/config";
+import { MARCA, PRECO } from "@/lib/config";
 
 const CAMINHO = [
   { titulo: "Seu mapa de Odùs", texto: "Conheça suas características e tendências." },
@@ -99,6 +99,7 @@ export default function Inicio() {
       <section className="heroi">
         <div className="container heroi__grade">
           <div className="heroi__texto">
+            <img src={MARCA.logo} alt="+Ori" width={180} height={216} className="heroi__logo" loading="eager" />
             <span className="eyebrow">Búzios e sabedoria ancestral</span>
             <h1>
               Há momentos em que precisamos de <em>clareza</em> para seguir nosso caminho
