@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { AREAS } from "@/base/areas";
 import { POSICOES, SENTIDO_POSICAO } from "@/base/cabala";
+import { PERGUNTAS } from "@/base/faq";
 import { CabalaCruz } from "@/components/CabalaCruz";
+import { FaqIa } from "@/components/FaqIa";
 import { FormAmostra } from "@/components/FormAmostra";
 import { MesaVitrine } from "@/components/MesaVitrine";
 import { MARCA, PRECO } from "@/lib/config";
@@ -67,29 +69,6 @@ const BENEFICIOS = [
     titulo: "Guarde sua leitura com você",
     texto:
       "Receba sua consulta em PDF para reler com calma, refletir sobre as orientações e revisitar esse momento sempre que desejar.",
-  },
-];
-
-const PERGUNTAS = [
-  {
-    p: "Preciso saber a hora em que nasci?",
-    r: "Não. A Cabala dos Odùs usa apenas o dia, o mês e o ano do seu nascimento.",
-  },
-  {
-    p: "As respostas são iguais para todo mundo?",
-    r: "Não. Duas pessoas podem tirar o mesmo Odù, mas a leitura muda conforme a cabala de cada uma. O Odù que caiu traz a mensagem; a sua cabala mostra como essa mensagem se aplica a você.",
-  },
-  {
-    p: "O +Ori substitui um jogo presencial?",
-    r: "Não. O +Ori é uma ferramenta de acolhimento e reflexão. Questões que pedem ebó, obrigação ou acompanhamento devem ser conduzidas por quem tem fundamento.",
-  },
-  {
-    p: "Como recebo a minha consulta?",
-    r: "Na hora, na tela, logo depois de cada jogada. No final você salva as cinco interpretações em um PDF.",
-  },
-  {
-    p: "O que acontece com os meus dados?",
-    r: "Seu nome e sua data de nascimento ficam guardados só no seu aparelho e são usados para calcular a cabala e escrever a sua leitura.",
   },
 ];
 
@@ -328,7 +307,9 @@ export default function Inicio() {
           <div className="secao__cabeca secao__cabeca--centro">
             <span className="eyebrow">Dúvidas frequentes</span>
             <h2>Antes de jogar</h2>
+            <p className="texto-suave">Pergunte o que quiser sobre o +Ori, ou veja as dúvidas mais comuns logo abaixo.</p>
           </div>
+          <FaqIa />
           <div className="faq">
             {PERGUNTAS.map((q) => (
               <details key={q.p}>

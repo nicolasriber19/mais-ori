@@ -5,6 +5,9 @@ export const PAGAMENTO_SIMULADO = true;
 // Versão estática (GitHub Pages): sem servidor, a leitura é montada no navegador em modo demonstração.
 export const ESTATICO = process.env.NEXT_PUBLIC_ESTATICO === "1";
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+// Endereço do servidor da FAQ com IA (ex.: o site na Vercel), para a versão estática chamar.
+// Vazio: a versão com servidor usa a própria rota, e a estática responde em modo demonstração.
+export const API_FAQ = process.env.NEXT_PUBLIC_API_FAQ ?? "";
 
 // Imagem e vídeos da guia virtual (em public/guia). `falando` é opcional.
 export const GUIA_MIDIA = {
