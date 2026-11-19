@@ -331,7 +331,7 @@ export const ODUS: Odu[] = [
     sentencas: ["O caminho se abre quando há firmeza e conclusão.", "É a agulha que carrega a linha."],
     cabala: {
       norte: {
-        resumo: "Pessoa reflexiva, sensível e observadora, de imaginação forte e espiritualidade marcante, que pensa antes de agir. Gentil e acolhedora, mas se perde em expectativas, dúvidas ou espera demais; amadurecida, ganha autonomia e firmeza para concluir o que começa.",
+        resumo: "Pessoa reflexiva, sensível e observadora, de imaginação forte e espiritualidade marcante. Pensa antes de agir. Gentil e acolhedora, mas se perde em dúvidas, expectativas ou espera demais. Amadurecida, ganha autonomia e firmeza para concluir o que começa.",
         palavras: ["reflexão", "sensibilidade", "visão", "expectativa"],
       },
       leste: {

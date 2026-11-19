@@ -13,28 +13,33 @@ export interface Fala {
   acao?: "checkout";
 }
 
-/** Texto como deve ser lido pela voz: sem o acento de Odù, que a voz pronuncia errado. */
+/** Texto como deve ser lido pela voz: sem o acento de Odù (a voz pronuncia errado) e sem símbolos. */
 export function textoFalado(texto: string): string {
-  return texto.replace(/Odù/g, "Odu");
+  return texto
+    .replace(/Odù/g, "Odu")
+    .replace("(Ori = Cabeça)", "(Ori, a cabeça)")
+    .replace("Vida Profissional/Trabalho", "vida profissional e trabalho");
 }
 
+// O Norte não diz qual Odù caiu (a mãe pediu assim); o nome aparece na cruz ao lado.
 const ABERTURA_POSICAO: Record<Posicao, (odu: string, n: number) => string> = {
-  norte: (odu, n) => `No seu Norte caiu ${odu}, o Odù ${n}. O Norte fala do seu jeito de ser e do seu destino.`,
+  norte: () => "No ponto Norte (Ori = Cabeça), fala sobre o seu jeito de ser e o seu destino.",
   leste: (odu, n) => `No Leste, o lado que te favorece, está ${odu}, o Odù ${n}.`,
   oeste: (odu, n) => `Agora o Oeste, o lado que pede atenção: ${odu}, o Odù ${n}.`,
   sul: (odu, n) => `No Sul, que são os seus passos e o caminho que você já fez, está ${odu}, o Odù ${n}.`,
 };
 
-/** As duas primeiras frases do resumo, para a fala caber no balão. */
+/** As duas primeiras frases do resumo, para a fala caber no balão (o Norte vai inteiro). */
 function resumoCurto(texto: string): string {
   return texto.split(/(?<=[.!?])\s+/).slice(0, 2).join(" ");
 }
 
 function falaDoPonto(cabala: Cabala, p: Posicao): Fala {
   const odu = getOdu(cabala[p]);
+  const resumo = p === "norte" ? odu.cabala[p].resumo : resumoCurto(odu.cabala[p].resumo);
   return {
     destaque: p,
-    texto: `${ABERTURA_POSICAO[p](odu.nome, odu.numero)} ${resumoCurto(odu.cabala[p].resumo)}`,
+    texto: `${ABERTURA_POSICAO[p](odu.nome, odu.numero)} ${resumo}`,
     voz: `${p}-${odu.numero}.mp3`,
   };
 }
@@ -48,13 +53,13 @@ export function falasDoGuia(nome: string, cabala: Cabala, modo: "amostra" | "com
     return [
       {
         destaque: "todos",
-        texto: `${oi} Que bom te ver aqui. Montei o seu mapa com a sua data de nascimento: são quatro pontos, e cada um recebeu um dos 16 Odùs. Vem comigo que eu te conto o seu Norte.`,
+        texto: `${oi} Que bom te ver aqui. Montei o seu mapa individual dos Odùs através da sua data de nascimento. São 4 pontos, e cada um deles recebeu um dos 16 Odùs. Vem comigo que eu te conto.`,
         voz: "amostra-abertura.mp3",
       },
       falaDoPonto(cabala, "norte"),
       {
         destaque: "todos",
-        texto: "Logo abaixo você já pode fazer a sua primeira jogada, para o amor. Os outros três pontos do seu mapa estão na consulta completa: lá eu te explico cada um, e você joga os búzios para o dinheiro, o trabalho, a saúde e a espiritualidade.",
+        texto: "Agora é o momento de começar a sua primeira jogada: Vida Profissional/Trabalho. Cada jogada revela uma orientação, trazendo reflexões sobre os caminhos da sua vida e aquilo que merece a sua atenção neste momento. Na consulta completa, vamos aprofundar essa jornada explorando também sobre dinheiro, amor, saúde e a espiritualidade. Estarei com você nessa caminhada. Vamos?",
         voz: "amostra-convite.mp3",
         acao: "checkout",
       },

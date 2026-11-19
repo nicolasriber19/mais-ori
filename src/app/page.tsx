@@ -6,7 +6,7 @@ import { CabalaCruz } from "@/components/CabalaCruz";
 import { FaqIa } from "@/components/FaqIa";
 import { FormAmostra } from "@/components/FormAmostra";
 import { MesaVitrine } from "@/components/MesaVitrine";
-import { MARCA, PRECO } from "@/lib/config";
+import { LINK_AGENDAMENTO, MARCA, PRECO } from "@/lib/config";
 
 const CAMINHO = [
   { titulo: "Seu mapa de Odùs", texto: "Conheça suas características e tendências." },
@@ -118,9 +118,10 @@ export default function Inicio() {
         <div className="container">
           <div className="secao__cabeca">
             <span className="eyebrow">Como funciona</span>
-            <h2>Conheça sua essência. Compreenda seu momento. Encontre novos caminhos.</h2>
+            <h2>Conheça sua essência. Compreenda seu momento e encontre novos caminhos.</h2>
             <p className="texto-suave">
-              A cabala é o mapa de quem você é. A jogada é a orientação para agora. O +Ori une as duas.
+              A cabala é o mapa individual sobre quem você é. A jogada dos búzios serve para a orientação do momento
+              presente. O +Ori une as duas coisas.
             </p>
           </div>
           <div className="passos">
@@ -219,7 +220,7 @@ export default function Inicio() {
                 caem abertos mostram o Odù que responde a cada jogada, lido a partir da sua cabala.
               </p>
               <p className="texto-suave">
-                A primeira jogada, para o amor, é grátis. As outras quatro estão na consulta completa.
+                A primeira jogada, para a vida profissional, é grátis. As outras quatro estão na consulta completa.
               </p>
             </div>
           </div>
@@ -315,6 +316,11 @@ export default function Inicio() {
               <details key={q.p}>
                 <summary>{q.p}</summary>
                 <p>{q.r}</p>
+                {q.agendar && LINK_AGENDAMENTO && (
+                  <a href={LINK_AGENDAMENTO} target="_blank" rel="noopener noreferrer" className="botao botao--contorno botao--pequeno faq__agendar">
+                    Agendar consulta online
+                  </a>
+                )}
               </details>
             ))}
           </div>

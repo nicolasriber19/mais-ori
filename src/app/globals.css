@@ -93,7 +93,7 @@ p { margin: 0; }
 .marca { display: inline-flex; align-items: center; gap: 1px; font-family: var(--font-display), serif; color: var(--creme); line-height: 1; }
 .marca__emblema { width: auto; height: 40px; margin-right: 8px; }
 .marca__mais { color: var(--ouro); font-size: 1.9rem; font-weight: 600; transform: translateY(-1px); }
-.marca__ori { font-size: 2.05rem; font-weight: 600; letter-spacing: 0.02em; }
+.marca__ori { font-size: 2.05rem; font-weight: 600; letter-spacing: 0.02em; color: var(--ouro); }
 .marca:hover { color: var(--creme); }
 
 /* ---------- botões ---------- */
@@ -327,6 +327,7 @@ p { margin: 0; }
 .faq summary::after { content: "+"; color: var(--ouro); font-size: 1.3rem; line-height: 1; }
 .faq details[open] summary::after { content: "–"; }
 .faq details p { margin-top: 10px; color: var(--texto-suave); font-size: 0.95rem; }
+.faq__agendar { margin-top: 14px; }
 
 /* assistente da FAQ */
 .faq-ia { max-width: 820px; margin: 0 auto 28px; padding: 24px 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }

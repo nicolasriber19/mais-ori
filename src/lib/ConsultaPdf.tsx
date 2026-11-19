@@ -43,7 +43,7 @@ const s = StyleSheet.create({
   pagina: { backgroundColor: "#fbf6ec", color: "#2a1f15", fontFamily: "Manrope", fontSize: 10.5, lineHeight: 1.55, paddingTop: 48, paddingBottom: 60, paddingHorizontal: 52 },
   topo: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end", borderBottom: "1pt solid #d4af6e", paddingBottom: 14, marginBottom: 22 },
   // A Cormorant desenha abaixo da caixa de linha padrão do react-pdf: os títulos levam lineHeight próprio.
-  marca: { fontFamily: "Cormorant", fontWeight: 600, fontSize: 30, lineHeight: 1.35, color: "#2a1f15" },
+  marca: { fontFamily: "Cormorant", fontWeight: 600, fontSize: 30, lineHeight: 1.35, color: "#b08a45" },
   marcaMais: { color: "#b08a45" },
   marcaLinha: { flexDirection: "row", alignItems: "center" },
   selo: { width: 34, height: 34, marginRight: 10 },

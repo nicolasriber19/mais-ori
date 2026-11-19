@@ -48,14 +48,14 @@ function Avatar({ falando, tamanho }: { falando: boolean; tamanho: "grande" | "b
     else v.pause();
   }, [falando]);
 
-  const usarVideo = !semVideo && !movimentoReduzido;
+  const usarVideo = Boolean(GUIA_MIDIA.parada) && !semVideo && !movimentoReduzido;
   return (
     <span className={`guia__avatar guia__avatar--${tamanho}${falando ? " guia__avatar--falando" : ""}`} aria-hidden="true">
-      {semImagem && semVideo ? (
+      {semImagem && !usarVideo ? (
         <span className="guia__avatar-reserva">+</span>
       ) : usarVideo ? (
         <>
-          <video src={GUIA_MIDIA.parada} poster={GUIA_MIDIA.imagem} autoPlay muted loop playsInline onError={() => setSemVideo(true)} />
+          <video src={GUIA_MIDIA.parada ?? undefined} poster={GUIA_MIDIA.imagem} autoPlay muted loop playsInline onError={() => setSemVideo(true)} />
           {GUIA_MIDIA.falando && (
             <video
               ref={falandoRef}
@@ -109,6 +109,8 @@ export function GuiaCabala({ falas, onDestaque }: { falas: Fala[]; onDestaque: (
       a.src = `${BASE_PATH}/guia/voz/${voz}`;
       let quadro = 0;
       const acompanhar = () => {
+        // Áudio pausado (o "Pular" pausa): para de acompanhar, senão o texto volta para onde o áudio parou.
+        if (a.paused) return;
         if (a.duration) setLetras(Math.min(texto.length, Math.ceil((texto.length * a.currentTime) / a.duration)));
         quadro = requestAnimationFrame(acompanhar);
       };

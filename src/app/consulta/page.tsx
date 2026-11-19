@@ -24,8 +24,10 @@ export default function Consulta() {
   if (!sessao || !cabala) return <SemDados />;
   if (!sessao.pago) return <Carregando />;
 
+  // As jogadas podem começar fora de ordem (a de trabalho é a grátis da amostra): a consulta segue pelas que faltam.
   const feitas = sessao.quedas ?? [];
-  if (feitas.length >= AREAS.length && j.etapa !== "lida") {
+  const pendentes = AREAS.filter((a) => !feitas.some((q) => q.area === a.id));
+  if (pendentes.length === 0 && j.etapa !== "lida") {
     return (
       <ConsultaCompleta
         sessao={sessao}
@@ -38,10 +40,11 @@ export default function Consulta() {
     );
   }
 
-  const indiceAtual = j.etapa === "lida" ? feitas.length - 1 : feitas.length;
-  const area = AREAS[indiceAtual];
-  const proxima = AREAS[indiceAtual + 1];
-  const ultima = feitas.length >= AREAS.length || !proxima;
+  const lida = j.etapa === "lida";
+  const area = lida ? AREAS.find((a) => a.id === feitas[feitas.length - 1].area)! : pendentes[0];
+  const ordem = lida ? feitas.length : feitas.length + 1;
+  const proxima = lida ? pendentes[0] : pendentes[1];
+  const ultima = !proxima;
 
   return (
     <section className="pagina">
@@ -53,9 +56,10 @@ export default function Consulta() {
 
         <ol className="limpa progresso" aria-label="Jogadas da consulta">
           {AREAS.map((a, i) => {
-            const estado = i < feitas.length && !(j.etapa === "lida" && i === indiceAtual) ? "feito" : i === indiceAtual ? "atual" : "";
+            const atual = a.id === area.id;
+            const estado = atual ? "atual" : feitas.some((q) => q.area === a.id) ? "feito" : "";
             return (
-              <li key={a.id} className={`progresso__item${estado ? ` progresso__item--${estado}` : ""}`} aria-current={i === indiceAtual ? "step" : undefined}>
+              <li key={a.id} className={`progresso__item${estado ? ` progresso__item--${estado}` : ""}`} aria-current={atual ? "step" : undefined}>
                 <b>{i + 1}</b> {a.curto}
               </li>
             );
@@ -67,7 +71,7 @@ export default function Consulta() {
           sessao={sessao}
           cabala={cabala}
           area={area}
-          ordem={indiceAtual + 1}
+          ordem={ordem}
           depois={
             <button
               className="botao botao--ouro"

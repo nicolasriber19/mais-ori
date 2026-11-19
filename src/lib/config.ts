@@ -9,10 +9,18 @@ export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 // Vazio: a versão com servidor usa a própria rota, e a estática responde em modo demonstração.
 export const API_FAQ = process.env.NEXT_PUBLIC_API_FAQ ?? "";
 
-// Imagem e vídeos da guia virtual (em public/guia). `falando` é opcional.
+// WhatsApp da mãe para agendar consulta online (só números, com DDI e DDD, ex.: "5561999999999").
+// Vazio: o botão de agendar não aparece.
+export const WHATSAPP_AGENDAMENTO = "";
+export const LINK_AGENDAMENTO = WHATSAPP_AGENDAMENTO
+  ? `https://wa.me/${WHATSAPP_AGENDAMENTO}?text=${encodeURIComponent("Olá! Vim pelo +Ori e gostaria de agendar uma consulta online.")}`
+  : "";
+
+// Imagem e vídeos da guia virtual (em public/guia). Os vídeos são opcionais: sem eles, fica a foto.
+// A foto é a de rosto e turbante que a mãe escolheu (original em material/guia-turbante.jpg).
 export const GUIA_MIDIA = {
   imagem: `${BASE_PATH}/guia/mae.webp`,
-  parada: `${BASE_PATH}/guia/mae-parada.mp4`,
+  parada: null as string | null,
   falando: null as string | null,
 };
 

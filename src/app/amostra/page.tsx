@@ -18,8 +18,8 @@ import { cabalaDe, primeiroNome } from "@/lib/pedido";
 import { useSessao } from "@/lib/sessao";
 import { useJogada } from "@/lib/useJogada";
 
-// A amostra grátis: o Norte da cabala e a 1ª jogada (amor). A consulta completa continua dela.
-const AREA_GRATIS = AREAS[0];
+// A amostra grátis: o Norte da cabala e a 1ª jogada (trabalho, como a mãe pediu). A consulta completa continua dela.
+const AREA_GRATIS = AREAS.find((a) => a.id === "trabalho")!;
 
 export default function Amostra() {
   const { sessao, atualizar, pronto } = useSessao();
@@ -43,8 +43,9 @@ export default function Amostra() {
           <span className="eyebrow">Sua amostra grátis</span>
           <h1>{primeiroNome(sessao.nome)}, esta é a sua cabala</h1>
           <p className="texto-suave">
-            Nascimento em {sessao.nascimento}. Cada ponto do seu mapa recebeu um dos 16 Odùs. Aqui você lê o seu Norte,
-            que fala da sua personalidade e do seu destino, e faz a sua primeira jogada de búzios, para o amor.
+            Nascimento em {sessao.nascimento}. Cada ponto do seu mapa recebeu um dos 16 Odùs. Aqui você lê os seus pontos:
+            Norte, Sul, Leste e Oeste, que formam a sua personalidade e o seu destino. E inicia a sua primeira jogada,
+            para a área profissional.
           </p>
         </div>
 
@@ -55,11 +56,15 @@ export default function Amostra() {
             </div>
             <div className="cartao cartao--ouro resumo-compra">
               <span className="eyebrow">Consulta completa</span>
-              <h2 style={{ fontSize: "1.9rem" }}>Os búzios cruzados com o seu mapa</h2>
+              <h2 style={{ fontSize: "1.9rem" }}>Seu mapa e os caminhos revelados pelos búzios</h2>
               <p className="texto-suave">
-                Os quatro pontos da sua cabala explicados e as cinco jogadas de búzios (amor, dinheiro, trabalho, saúde e
-                espiritualidade), cada uma interpretada para você. A primeira, do amor, você faz aqui de graça. Tudo em
-                PDF no final.
+                Uma leitura mais profunda da sua jornada. Conheça os quatro pontos da sua cabala e descubra como eles se
+                conectam às cinco jogadas: amor, dinheiro, trabalho, saúde e espiritualidade. Cada uma traz mensagens e
+                orientações que ajudam você a compreender melhor seu momento e os caminhos que se apresentam.
+              </p>
+              <p className="texto-suave">
+                Você começa pela jogada do profissional/trabalho gratuitamente, e recebe sua leitura completa em PDF para
+                consultar sempre que desejar.
               </p>
               <div className="linha-valor">
                 <span className="texto-suave">Consulta completa</span>
@@ -83,8 +88,12 @@ export default function Amostra() {
           <span className="eyebrow">Sua primeira jogada</span>
           <h2>{AREA_GRATIS.titulo}</h2>
           <p className="texto-suave">
-            Os búzios caem para você e a leitura considera a sua cabala. As outras quatro jogadas (dinheiro, trabalho,
-            saúde e espiritualidade) estão na consulta completa.
+            Nesta primeira jogada, os búzios trazem uma orientação sobre sua vida profissional, considerando também a sua
+            cabala e os caminhos que ela revela sobre você.
+          </p>
+          <p className="texto-suave">
+            As outras quatro jogadas — amor, dinheiro, saúde e espiritualidade — fazem parte da consulta completa,
+            ampliando seu olhar sobre os diferentes caminhos da sua vida.
           </p>
         </div>
 

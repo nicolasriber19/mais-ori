@@ -12,6 +12,8 @@ export interface Duvida {
   r: string;
   /** Palavras que ajudam a achar esta resposta no modo demonstração (sem acento, minúsculas). */
   termos: string[];
+  /** Mostra o botão de agendar consulta online pelo WhatsApp junto da resposta. */
+  agendar?: boolean;
 }
 
 export const PERGUNTAS: Duvida[] = [
@@ -27,8 +29,9 @@ export const PERGUNTAS: Duvida[] = [
   },
   {
     p: "O +Ori substitui um jogo presencial?",
-    r: "Não. O +Ori é uma ferramenta de acolhimento e reflexão. Questões que pedem ebó, obrigação ou acompanhamento devem ser conduzidas por quem tem fundamento.",
-    termos: ["presencial", "substitui", "ebo", "obrigacao", "terreiro", "pessoalmente", "zelador", "babalorixa", "ialorixa"],
+    r: "Não. O +Ori é uma ferramenta de acolhimento, reflexão e orientação espiritual. Ele oferece caminhos para compreender melhor o momento vivido, mas não substitui uma consulta individual. Se sentir necessidade de aprofundar alguma questão, você também poderá agendar uma consulta online diretamente comigo, para um atendimento mais próximo e personalizado. Questões que envolvam ebó, obrigações ou cuidados ritualísticos devem ser conduzidas por quem tem fundamento.",
+    termos: ["presencial", "substitui", "ebo", "obrigacao", "terreiro", "pessoalmente", "zelador", "babalorixa", "ialorixa", "agendar", "agendamento", "marcar", "online", "individual", "agendar uma consulta", "agendar consulta", "marcar uma consulta", "consulta online", "consulta individual"],
+    agendar: true,
   },
   {
     p: "Como recebo a minha consulta?",
@@ -74,7 +77,7 @@ export const BASE_FAQ: Duvida[] = [
   },
   {
     p: "O que vem na amostra grátis?",
-    r: "Na amostra grátis você vê a sua cabala com o Norte explicado e faz a primeira jogada, para o amor, lida junto com a sua cabala. Os outros três pontos e as outras quatro jogadas ficam na consulta completa.",
+    r: "Na amostra grátis, você conhece sua cabala, com interpretação do ponto Norte (Ori) explicado, e recebe a primeira jogada, voltada ao profissional e trabalho. Essa jogada é interpretada em conjunto com sua cabala (mapa de Odùs individual), oferecendo uma primeira compreensão sobre as energias e tendências que envolvem essa área da sua vida.\n\nNa consulta completa, você terá acesso aos outros três pontos da cabala e às quatro jogadas restantes, ampliando sua leitura e trazendo uma visão mais abrangente sobre diferentes áreas da sua vida.",
     termos: ["gratis", "amostra", "gratuito", "de graca", "free", "testar", "experimentar"],
   },
   {
